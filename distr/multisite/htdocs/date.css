@@ -1,0 +1,45 @@
+body{background-color:#F1F1F1;}
+
+td.red{border:1px solid #E9C980;
+background-color:#ffffff;}
+
+table.week{margin:0px;
+background-color:#ffffff;}
+table.week tr td.week{background-color:#9D9D9D;
+color:#ffffff;
+border:1px solid #F4DDAF;}
+table.week tr td.week-end{background-color:#CC7E3E;
+color:#ffffff;}
+table.week tr td.frame{border:1px solid #80AE80;
+background-color:#A9FBA9;}
+
+td.orange{background-color:#FFF6E9;}
+td.green {
+	background-color:#5A9E4A;
+	color: White;
+}
+td.green a{color:#ffffff;}
+td.frame{border:1px solid #80AE80;}
+
+table.week tr td{font:normal 11px Verdana, Geneva,sans-serif;
+color:#000000;
+text-align:center;
+padding:5px;
+margin:0px;
+border:1px solid #F4DDAF;
+border-collapse:collapse;}
+
+a {
+	text-decoration:none;
+	color:#000000;
+}
+a:hover {
+	color:#ffffff;
+}
+a:visited {
+
+}
+
+select {
+	font:normal 11px Verdana, Geneva,sans-serif;
+}

@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="/style-4site.css" type="text/css"><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Pragma" content="No-Cache">
+<meta http-equiv="Expires" content="-1">
+<title>FileSelector | Управление MultiSite | System&nbsp;&#151;&nbsp;4Site MultiSite *FORK*</title>
+<link rel="stylesheet" type="text/css" href="/fileselect.css">
+<!--link rel="stylesheet" type="text/css" href="/style-4site.css"-->
+<SCRIPT language="JavaScript" src="/js/klayers.js"></script>
+<SCRIPT language="JavaScript">
+<!--
+I   = (document.all) ? true:false;
+DOM = ((document.getElementById)&&(!I))?true:false;
+var oldlayer = "";
+function submit(formname)
+{
+eval( 'document.forms.' + formname + '.submit()');
+}
+function change(layer) {
+	if (I) { var curlayer = eval("document.all['"+layer+"']"); }
+	if (DOM) { var curlayer = eval("document.getElementById('"+layer+"')"); }
+	if (curlayer.className == 'ord') { curlayer.className = 'displayNone' }
+	else {
+		if (oldlayer) {
+			if (I) { temp_l = eval("document.all['"+oldlayer+"']"); }
+			if (DOM) { temp_l = eval("document.getElementById('"+oldlayer+"')"); }
+			temp_l.className = 'displayNone';
+		}
+		curlayer.className = 'ord';
+		oldlayer = layer;
+	}
+}
+function sub_del(formnm, act) {
+	eval( 'document.forms.' + formnm + '.returnact.value="'+act+'"')
+	submit(formnm);
+}
+
+//-->
+</SCRIPT>
+
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0" bottommargin="0" onload="document.getElementById('loading').style.display='none';">
+<table id="loading" style="position: absolute; left: 400px; top: 300px; width: 200px; height: 40px; background-color: White; border: 1px solid Red; margin: 10px 10px 10px 10px;">
+	<tr><td valign="middle" align="center" color="Green">Подождите, форма загружается...</td></tr>
+</table border="0" cellpadding="0" cellspacing="0">
+</td></tr>
+<!-- верх -->
+<!-- середина -->
+<tr><td valign="top" height="100%">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" height="95%">
+<!-- средняя таблица -->
+<tr><td valign="top" colspan="2">
+
+<!-- середина -->
+<script>
+function fs_open1(d,t,frm,fld) {
+	var fs = document.forms.fsel;
+	fs.d.value = d
+	fs.t.value = t
+	fs.form.value = frm
+	fs.fld.value = fld
+	submit('fsel')
+}
+</script>
+<form method="post" action="/cgi-bin/4site_popup.pl" name="fsel">
+<input type="hidden" name="CGISESSID" value="6de5bc089dc6914f7fbc8bed8d1134e2">
+	<input type="hidden" name="user" value="3">
+<input type="hidden" name="site" value="256">
+<input type="hidden" name="s" value="284">
+<input type="hidden" name="d" value="">
+<input type="hidden" name="t" value="">
+<input type="hidden" name="form" value="">
+<input type="hidden" name="fld" value="">
+<input type="hidden" name="returnact" value="fileselect">
+</form>
+<h3>/img</h3>
+<div class="up"><a href="#" onclick="javascript:fs_open1('/','gif|jpg|png','add_hotel','pic1_fld'); return false;"><img src="/img/arrow_up.gif" border="0"></a></div>
+
+<a href="#" onclick="javascript:fs_open1('//img/find','gif|jpg|png','add_hotel','pic1_fld'); return false;"><img src="/img/folder.gif" border="0" align="absmiddle" class="img1">find</a>
+<br>
+<a href="#" onclick="javascript:fs_open1('//img/gallery','gif|jpg|png','add_hotel','pic1_fld'); return false;"><img src="/img/folder.gif" border="0" align="absmiddle" class="img1">gallery</a>
+<br>
+<a href="#" onclick="javascript:fs_open1('//img/hotel','gif|jpg|png','add_hotel','pic1_fld'); return false;"><img src="/img/folder.gif" border="0" align="absmiddle" class="img1">hotel</a>
+<br>
+<a href="#" onclick="javascript:fs_open1('//img/main','gif|jpg|png','add_hotel','pic1_fld'); return false;"><img src="/img/folder.gif" border="0" align="absmiddle" class="img1">main</a>
+<br>
+<a href="#" onclick="javascript:fs_open1('//img/right1','gif|jpg|png','add_hotel','pic1_fld'); return false;"><img src="/img/folder.gif" border="0" align="absmiddle" class="img1">right1</a>
+<br>
+<a href="javascript:;" onclick="opener.document.forms['add_hotel'].elements['pic1_fld'].value='//img/1pix.gif';window.close();"><img src="/img/gif.gif" border="0" align="absmiddle" class="img2">1pix.gif</a>
+<br>
+<a href="javascript:;" onclick="opener.document.forms['add_hotel'].elements['pic1_fld'].value='//img/accommodation.gif';window.close();"><img src="/img/gif.gif" border="0" align="absmiddle" class="img2">accommodation.gif</a>
+<br>
+<a href="javascript:;" onclick="opener.document.forms['add_hotel'].elements['pic1_fld'].value='//img/bibb-cott.gif';window.close();"><img src="/img/jpg.gif" border="0" align="absmiddle" class="img2">bibb-cott.jpg</a>
+<br>
+<a href="javascript:;" onclick="opener.document.forms['add_hotel'].elements['pic1_fld'].value='//img/bibb-rh.gif';window.close();"><img src="/img/jpg.gif" border="0" align="absmiddle" class="img2">bibb-rh.jpg</a>
+<br>
+<a href="javascript:;" onclick="opener.document.forms['add_hotel'].elements['pic1_fld'].value='//img/bibb-san.gif';window.close();"><img src="/img/gif.gif" border="0" align="absmiddle" class="img2">bibb-san.gif</a>
+<br>
+<a href="javascript:;" onclick="opener.document.forms['add_hotel'].elements['pic1_fld'].value='//img/bibb-vip.gif';window.close();"><img src="/img/gif.gif" border="0" align="absmiddle" class="img2">bibb-vip.gif</a>
+<br>
+<span class="grey"><img src="/img/txt.gif" border="0" align="absmiddle" class="img2">bot1.txt</span><br>
+
+
+<!-- середина -->
+<br></td></tr></table>
+<h4>Фильтр&nbsp;на: *.gif, *.jpg, *.png</h4>
+</td></tr>
+</table>
+</body>
+</html>

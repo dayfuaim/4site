@@ -1,0 +1,9 @@
+<h2>Выбор шаблона</h2>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="template_edit">
+<table class="tab_nobord"><tr><td class="tl">Название шаблона:</td>
+<td class="tal"><select name="template_id" onchange="this.form.submit()"><option>-- Выберите шаблон --</option><!--#include virtual="tmpl_downlist"--></select></td></table>
+<input type="hidden" name="returnact" value="edit_template">
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"--></form>
+
+<!--#include virtual="Page::template_edit"-->

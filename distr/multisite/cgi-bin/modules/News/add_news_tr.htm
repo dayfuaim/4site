@@ -1,0 +1,16 @@
+<form method="post" name="tr" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<table class="tab_nobord">
+<tr><td class="tl">Название диапазона</td>
+<td class="tal"><input type="text"  name="news_tr_fld" size="20"></td></tr>
+<tr><td class="tl">ID диапазона</td>
+<td class="tal"><input type="text"  name="title_fld" size="20"></td></tr>
+<tr><td class="tl">SQL для расчётов</td>
+<td class="tal"><textarea rows="20" name="sql_fld" cols="60"></textarea></td></tr>
+<tr><td class="tar" colspan="2"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+<input type="hidden" name="act" value="add_news_tr">
+</tr></table>
+<!--#include virtual="returnact"-->
+<!--#include virtual="logpass"-->
+</form>
+
+<!--#include virtual="news_tr_list"-->

@@ -1,0 +1,89 @@
+
+<form method="post" name="period" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="9" class="news-green" height="3"><img src="/img/1pix.gif" border="0" height="3"></td></tr>
+<tr class="news-green">
+<td width="10"><img src="/img/1pix.gif" border="0" width="10"></td>
+<td class="tl">с</td>
+<td class="tal"><!--#include virtual="stdate_find"--></td>
+<td class="tl">&nbsp;</td>
+<td class="tl">по</td>
+<td class="tal"><!--#include virtual="enddate_find"--></td>
+<td width="10"><img src="/img/1pix.gif" border="0" width="10"></td>
+</tr>
+</table>
+
+</td></tr>
+<tr><td class="libo">либо</td></tr>
+<tr class="news-green"><td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="8" class="news-green" height="3"><img src="/img/1pix.gif" border="0" height="3"></td></tr>
+<tr><td width="10"><img src="/img/1pix.gif" border="0" width="10"></td>
+<td class="tl">за&nbsp;период&nbsp;</td>
+<td><select name="lag"><!--#include virtual="lag_downlist_sel"--></select></td></tr>
+<tr><td colspan="7" class="news-green" height="3"><img src="/img/1pix.gif" border="0" height="3"></td></tr>
+</table>
+
+</td></tr>
+<tr><td height="13"><img src="/img/1pix.gif" border="0" height="13"></td></tr>
+<tr><td align="right"><input type="Image" src="/img/but/find1.gif" title="Найти" class="but" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></table>
+<input type="hidden" name="returnact" value="del_news">
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="mul" value="1">
+<!--#include virtual="logpass"--></form>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="edit_news">
+<!--#include virtual="news_list"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="act" value="del_news">
+<input type="hidden" name="returnact" value="del_news">
+</form>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript" src="/js/ext/build/locale/ext-lang-ru_cp1251.js"></script>
+<script type="text/javascript" language="JavaScript">
+var YE = YAHOO.util.Event;
+function newsSub() {
+	var e = arguments[0]
+	var id = arguments[1]
+	var ff = document.forms['edit_news']
+	ff.act.value = arguments[2]
+	if (arguments[2]) {
+		if (!confirm('Вы действительно хотите удалить новость?')) {
+			YE.stopEvent(e)
+			return false
+		}
+	}
+	ff.returnact.value = arguments[3]
+	ff.news.value = arguments[4];
+	if (id) YE.stopEvent(e);
+	ff.submit()
+
+}
+var Controls = {
+    init : function(){
+ 		var DT = new Ext.form.DateField({
+			applyTo: '_stdate',
+			name: 'stdate',
+			width: 100,
+			format: 'd.m.Y',
+			allowBlank: true
+		})
+ 		var DT1 = new Ext.form.DateField({
+			applyTo: '_enddate',
+			name: 'enddate',
+			width: 100,
+			format: 'd.m.Y',
+			allowBlank: true
+		})
+	}
+};
+
+Ext.onReady(InitCtrls,Controls,true);
+
+function InitCtrls() {
+	Controls.init()
+}
+</script>

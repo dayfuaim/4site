@@ -1,0 +1,18 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<table class="tab_nobord">
+<tr>
+<td class="tl">Сайт</td>
+<td class="tal"><select name="site_id"><option value="">-- Выберите сайт --</option><!--#include virtual="site_downlist"--></select></td>
+</tr>
+<tr>
+<td class="tl">Клон</td>
+<td class="tal"><select name="clone_id"><option value="">-- Выберите сайт --</option><!--#include virtual="clone_downlist"--></select></td>
+</tr>
+<tr><td class="tar" colspan="2"><input type="Image" src="/img/but/do1.gif" title="Выполнить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)" onclick="this.form.act.value='add_action_message'"></td>
+</tr></table>
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="show" value="1">
+</form>
+
+<!--#include virtual="clone_progress"-->

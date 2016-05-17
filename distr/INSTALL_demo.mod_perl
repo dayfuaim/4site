@@ -1,0 +1,69 @@
+Инструкция настройке демо-сайта 4Site CMS в mod_perl-режиме
+
+Предварительные условия:
+
+1. Установленная система управления 4Site CMS и рабочий демо-сайт в cgi-режиме (см. соответствующие инструкции по установке).
+2. Установленный и настроенный модуль mod_perl для Apache (желательно версии 2.x).
+
+На данный момент сама система управления 4Site не совместима с mod_perl, то есть идет речь о работе демо-сайта в режиме mod_perl.
+
+Установка
+
+	[a] Настройте Apache для работы с mod_perl (http://perl.apache.org/docs/).
+
+	[b] Измените настройки Apache, которые касаются VirtualHost демо-сайта (здесь и далее значения в фигурных скобках нужно заменить на свои):
+
+		# Настройка demo-сайта для Unix-подобных систем
+		<VirtualHost {site_IP:port}>
+			ServerAdmin	{you_choose}
+			ServerName	test_[at]_ALT-Server
+			DocumentRoot {site_ROOT}/htdocs
+			<Directory "{site_ROOT}/htdocs">
+				Options Indexes Includes FollowSymLinks MultiViews
+				AllowOverride None
+				Order allow,deny
+				Allow from all
+			</Directory>
+			ErrorLog	{LOGS_ROOT}/test-error_log
+			TransferLog {LOGS_ROOT}/test-access_log
+			Alias /pcgi/ {site_ROOT}/pcgi/
+			Alias /SOAP/ {site_ROOT}/pcgi/SOAP/
+			ScriptAlias /cgi-bin/ {site_ROOT}/pcgi/
+			PerlOptions +Parent
+			PerlSwitches -I{site_ROOT}/pcgi
+			PerlModule Apache2
+			PerlModule ModPerl::Registry
+			<Location ~ "/(pcgi|SOAP)">
+				SetHandler perl-script
+				PerlResponseHandler ModPerl::Registry
+				PerlOptions +ParseHeaders
+				Options +ExecCGI
+			</Location>
+		</VirtualHost>
+
+		# Настройка demo-сайта для Windows
+		<VirtualHost {site_IP:port}>
+			ServerAdmin {you_choose}
+			ServerName {you_choose}
+			ScriptAlias /SOAP/ "{site_ROOT}/pcgi/SOAP/"
+			DocumentRoot "{site_ROOT}/htdocs"
+			ScriptAlias /cgi-bin/ "{site_ROOT}/pcgi/"
+			ErrorLog {log_ROOT}/test-error_log
+			CustomLog {log_ROOT}/test-access_log common
+			Alias /pcgi/ "{site_ROOT}/pcgi/"
+			<Location ~ "/(pcgi|SOAP)">
+			  SetHandler perl-script
+			  PerlResponseHandler ModPerl::Registry
+			  Options +ExecCGI
+			  PerlOptions +ParseHeaders
+			</Location>
+		</VirtualHost>
+
+		Не забудьте добавить директивы Listen для порта сайта.
+
+	[c] Проверьте работу демо-сайта. Чтобы убедиться, что он работает в mod_perl-режиме, выполните скрипт printenv.pl из комплекта поставки Apache. При вызове через /pcgi/printenv.pl должна появиться переменная окружения MOD_PERL, в которой будет указана версия mod_perl.
+
+	[d] Поздравляем, Вы успешно установили демо-сайт в mod_perl-режиме!
+
+Все сообщения об ошибках и пожелания отравляйте через форму поддержки на сайте 4Site:
+http://www.4site.ru/support/feedback.shtml.

@@ -1,0 +1,43 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="rel_o">
+<table class="tab_nobord">
+	<tr>
+		<td class="tl">Страница</td>
+		<td class="tal"><select name="original_page_id"><!--#include virtual="page_ex_downlist"--></select></td>
+		<td class="tal"><input type="Image" src="/img/but/select1.gif" title="Выбрать" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+	</tr>
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+</table></form>
+
+<form name="fo" method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="order_fld" value="">
+<!--#include virtual="related_order_drag"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="order" value="">
+<input type="hidden" name="act" value="order_related">
+<!--#include virtual="returnact"-->
+</form>
+
+<script type="text/javascript">
+var dragsort = ToolMan.dragsort()
+var junkdrawer = ToolMan.junkdrawer()
+
+dragsort.makeListSortable(document.getElementById("gpix"), verticalOnly, saveOrder)
+
+function verticalOnly(item) {
+	item.toolManDragGroup.verticalOnly()
+}
+
+function saveOrder(item) {
+	var group = item.toolManDragGroup
+	var list = group.element.parentNode
+	var id = list.getAttribute("id")
+	if (id == null) return
+	group.register('dragend', function() {
+		ToolMan.cookies().set("list-" + id,
+				junkdrawer.serializeList(list), 365)
+	})
+}
+</script>

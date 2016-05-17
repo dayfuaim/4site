@@ -1,0 +1,90 @@
+<script>
+function fs_open(d,t,frm,fld) {
+	window.open('','fs','width=300,height=220,scrollbars=yes')
+	var fs = document.forms.fsel;
+	fs.d.value = d
+	fs.t.value = t
+	fs.form.value = frm
+	fs.fld.value = fld
+	submit('fsel')
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site_popup.pl" name="fsel" target="fs">
+<!--#include virtual="logpass_user"-->
+<input type="hidden" name="site" value="256">
+<input type="hidden" name="s" value="<!--#include virtual="site_id"-->">
+<input type="hidden" name="d" value="">
+<input type="hidden" name="t" value="">
+<input type="hidden" name="form" value="">
+<input type="hidden" name="fld" value="">
+<input type="hidden" name="returnact" value="fileselect">
+</form>
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" enctype="multipart/form-data" name="pa" onsubmit="return chkfrm()">
+<input type="hidden" name="upload" value="big_url_fld,small_url_fld">
+<table class="tab_nobord">
+<tr><td class="tl">Рубрика:</td>
+<td class="tal"><select name="gallerycategory_id"><!--#include virtual="Gallery::category_downlist"--></select></td></tr>
+<tr><td class="tl">URL большой картинки:</td>
+<td class="tal"><input type="file" name="big_url_fld"  onchange="chFS('big_url_fld')"><br><input type="text" name="big_url_fld1" size="30" class="input_txt" onchange="chFS1('big_url_fld')">&nbsp;<a href="#" onclick="javascript:fs_open('/img/gallery','gif|jpg|png|mov','pa','big_url_fld1'); return false;"><img src="/img/4site/folder_open.gif" border="0" align="absmiddle" id="big_url_fld2"></a></td></tr>
+<tr><td class="tl">URL миниатюры:</td>
+<td class="tal"><input type="file" name="small_url_fld"  onchange="chFS('small_url_fld')"><br><input type="text" name="small_url_fld1" size="30" class="input_txt" onchange="chFS1('small_url_fld')">&nbsp;<a href="#" onclick="javascript:fs_open('/img/gallery','gif|jpg|png','pa','small_url_fld1'); return false;"><img src="/img/4site/folder_open.gif" border="0" align="absmiddle" id="small_url_fld2"></a></td></tr>
+<tr><td class="tb">Папка (внутри Галереи):</td>
+<td class="tal"><input type="text"  name="folder_fld" size="64"></td></tr>
+<tr><td class="tl">Описание:</td>
+<td class="tal"><input type="text"  name="descr_fld" size="64"></td></tr>
+<tr><td class="tl">Комментарий:<br><i>(необязательный)</i></td>
+<td class="tal"><input type="text"  name="comment_fld" size="64"></td></tr>
+<tr><td colspan="2" class="tar"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+<input type="hidden" name="act" value="add_gallery_pix">
+<!--#include virtual="returnact"--></tr></table>
+<!--#include virtual="logpass"--></form>
+
+<script>
+function chFS(fld) {
+	var d = document;
+	var ff = d.forms['pa'];
+	if (ff.elements[fld].value!='') {
+		ff.elements[fld+"1"].disabled = true
+		d.getElementById(fld+"2").style.display = 'none'
+	} else {
+		ff.elements[fld+"1"].disabled=false
+		d.getElementById(fld+"2").style.display = ''
+	}
+}
+function chFS1(fld) {
+	var d = document;
+	var ff = d.forms['pa'];
+	if (ff.elements[fld+"1"].value!='') {
+		ff.elements[fld].disabled = true
+	} else {
+		ff.elements[fld].disabled=false
+	}
+}
+
+function chkfrm() {
+	var d = document;
+	var ff = d.forms['pa'];
+	var big = ff.elements['big_url_fld'].value
+	var big1 = ff.elements['big_url_fld1'].value
+	var small = ff.elements['small_url_fld'].value
+	var small1 = ff.elements['small_url_fld1'].value
+	if (/[а-яА-Я]/.test(big)) {
+		alert("Недопустимые символы в имени картинки!")
+		return false
+	}
+	if (/[а-яА-Я]/.test(big1)) {
+		alert("Недопустимые символы в имени картинки!")
+		return false
+	}
+	if (/[а-яА-Я]/.test(small)) {
+		alert("Недопустимые символы в имени миниатюры!")
+		return false
+	}
+	if (/[а-яА-Я]/.test(small1)) {
+		alert("Недопустимые символы в имени миниатюры!")
+		return false
+	}
+	return true
+}
+</script>

@@ -1,0 +1,67 @@
+<script>
+function chtitle() {
+	var ff = document.forms.ep;
+	if (ff.at.checked==true) {
+		ff.title_fld.disabled=true
+		document.getElementById('att').className="tr_col1"
+	} else {
+		ff.title_fld.disabled=false
+		document.getElementById('att').className=""
+	}
+}
+</script>
+<h2>Заполните основные параметры страницы</h2>
+<div align="left">
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="ep">
+<table class="tab_nobord">
+<tr><td class="tl">Название в меню</td>
+<td class="tal"><input type="text"  name="label_fld" size="40" maxlengnh="255"></td></tr>
+<tr><td class="tl">Название в заголовке</td>
+<td class="tal"><input type="text"  name="fulllabel_fld" size="40" maxlengnh="255"></td></tr>
+<tr><td class="tl"><label for="at">Авто-&lt;title&gt;</td>
+<td class="tal"><input type="checkbox" id="at" name="at" onchange="chtitle()" checked></td></tr>
+<tr id="att" class="tr_col1"><td class="tl">&lt;title&gt;</td>
+<td class="tal"><input type="text"  name="title_fld" size="40" value="" disabled></td></tr>
+<tr><td class="tl">URL</td>
+<td class="tal"><input type="text"  name="url_fld" size="40" value="/.shtml"></td></tr>
+<tr><td class="tl">Родительская страница</td>
+<td class="tl"><b><!--#include virtual="masterpage_sel"--></b></td></tr>
+<tr><td class="tl">Шаблон</td>
+<td class="tal"><select name="template_id"><!--#include virtual="template_downlist"--></select></td></tr>
+<tr><td class="tl">Актульна до...</td>
+<td class="tal"><input type="text" name="exp_fld" id="exp_fld" size="10" value="" title="Дата"></td></tr>
+<tr><td>&nbsp;</td><td class="tar"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+<input type="hidden" name="master_page_id" value="<!--#include virtual="masterpage_id"-->">
+<input type="hidden" name="enabled_fld" value="1">
+<input type="hidden" name="act" value="add_page">
+<input type="hidden" name="returnact" value="add_page1"></tr></table>
+<!--#include virtual="logpass"--></form>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/core.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/form.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/panel.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/button.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/resizable.css" />
+<script type="text/javascript" src="/js/ext/build/locale/ext-lang-ru_cp1251.js"></script>
+<script type="text/javascript" language="JavaScript">
+var ResizableEx = {
+    init : function(){
+		var DT = new Ext.form.DateField({
+			applyTo: 'exp_fld',
+			name: 'exp_fld',
+			width: 100,
+			format: 'd.m.Y',
+			allowBlank: true
+		})
+	}
+};
+
+Ext.EventManager.onDocumentReady(InitCtrls,ResizableEx,true);
+
+function InitCtrls() {
+	ResizableEx.init()
+}
+</script>

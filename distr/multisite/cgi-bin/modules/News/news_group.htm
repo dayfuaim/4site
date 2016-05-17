@@ -1,0 +1,31 @@
+<h2>Добавление группы Новостей</h2>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="rg">
+<table class="tab_nobord">
+<tr><td class="tl">Название группы</td>
+<td class="tal"><input type="text"  name="news_group_fld" size="30"></td></tr>
+<tr><td class="tl">Формат даты</td>
+<td class="tal"><textarea name="dateformat_fld" cols="40" rows="5"></textarea></td></tr>
+<tr><td class="tl">Страница привязки</td>
+<td class="tal"><select name="page_id"><option value="">-- None --</option><!--#include virtual="Page::page_ex_downlist"--></select></td></tr>
+<tr><td class="tl" valign="top"><label for="rss">RSS feed?</label></td>
+<td class="tal"><input type="checkbox" name="rss" id="rss" onchange="this.form.rss_fld.disabled=!this.checked"><br><input type="text"  name="rss_fld" size="30" disabled></td></tr>
+<tr><td>&nbsp;</td><td class="tar"><input type="Image" src="/img/but/add1.gif" title="Добавить" class="but" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+<input type="hidden" name="act" value="add_news_group">
+<!--#include virtual="returnact"-->
+<!--#include virtual="logpass"--></form>
+</table>
+
+<h2>Редактирование группы новостей</h2>
+<!--#include virtual="news_group_list"-->
+
+<script type="text/javascript" language="JavaScript">
+function checkDelete(frmid) {
+//	var d = document;
+//	var ff = eval("d.forms."+frmid)
+	if (confirm("Вы удаляете группу.\nЭто удалит все новости этой группы.\n\nВы хотите именно этого?")) {
+		return true
+	}
+	return false
+}
+
+</script>

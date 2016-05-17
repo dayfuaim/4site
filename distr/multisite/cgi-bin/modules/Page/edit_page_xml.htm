@@ -1,0 +1,25 @@
+<script language="JavaScript" type="text/javascript" src="/js/prototype.js"></script>
+<SCRIPT>
+function massub(form) {
+	var ff = eval('document.forms.'+form)
+	ff.act.value='edit_page_metadata';
+	ff.returnact.value='edit_page_xml';
+	submit('edit_page_xml');
+}
+
+function do_act(form,page_id) {
+	var ff = eval('document.forms.'+form)
+	ff.act.value='';
+	ff.page_id.value=page_id;
+	ff.spage_id.value=page_id;
+	ff.submit()
+}
+</SCRIPT>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="edit_page_xml">
+<!--#include virtual="page_select_xml"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="act" value="edit_page_metadata">
+<input type="hidden" name="returnact" value="edit_page2">
+</form>

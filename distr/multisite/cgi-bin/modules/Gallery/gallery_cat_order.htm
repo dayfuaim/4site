@@ -1,0 +1,28 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="gallery_cat_o">
+<table class="tab_nobord">
+	<tr>
+		<td class="tl">Родительская Рубрика</td>
+		<td class="tal"><select name="parent_id"><option value="0">&lt;нет&gt;<!--#include virtual="Gallery::category_downlist"--></select></td>
+		<td class="tal"><input type="Image" class="but" src="/img/but/select1.gif" title="Выбрать" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+	</tr>
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+</table></form>
+
+
+<form name="fo" method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<input type="hidden" name="move" value="">
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="order_fld" value="">
+
+<!--#include virtual="Gallery::gallery_cat_order_drag"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="order" value="">
+<input type="hidden" name="act" value="order_gallery_cat">
+<!--#include virtual="returnact"-->
+</form>
+
+<script type="text/javascript">
+Sortable.create('gpix',{dropOnEmpty: false});
+</script>

@@ -1,0 +1,23 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<table class="tab_nobord">
+	<tr>
+		<td class="tl">Модуль</td>
+		<td class="tal"><select name="module_id" onchange="if(this.selectedIndex!=0)this.form.submit()"><option>-- Choose --</option><!--#include virtual="module_downlist"--></select></td>
+	</tr>
+<table>
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+</form>
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+	<!--#include virtual="action_by_mod_downlist"-->
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+</form>
+
+<table border="0" cellpadding="0" cellspacing="0" class="inform" height="32" align="center">
+<tr><td class="tl-big"rowspan="2" valign="top"><img src="/img/info.gif" width="32" height="32" border="0" align="absmiddle" hspace="5"></td>
+<td class="tl-big" valign="top"><span class="alert">Примечание:</span></td></tr><tr><td class="tl-big" valign="top">В текст сообщения можно вставлять "тэги" вида "{..._id|..._fld}".</td></tr>
+</table>

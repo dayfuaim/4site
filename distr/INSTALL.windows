@@ -1,0 +1,116 @@
+Инструкция по установке 4Site CMS на OC Windows (собственный веб-сервер) в cgi-режиме сайта
+
+Предварительные условия:
+
+1. Apache 2.0.49+*,
+2. MySQL 4.0.10+*,
+3. Perl 5.8.0+* (рекомендуется ActiveState Perl), модули Perl:
+	3.1 SOAP::Lite 0.60+ (и все необходимые для его работы),
+	3.2 CGI::Session 3.95+ (и все необходимые для его работы),
+	3.3 Archive::Zip 1.13+ (и все необходимые для его работы),
+	3.4 DBI, DBD::mysql (и все необходимые для его работы)
+4. MS Windows 2000/XP/2003 Server с последними важными обновлениями.
+
+* - Версии продуктов указаны в качестве рекомендации, система работоспособна (негарантированно) и на более ранних.
+
+Состав дистрибутива
+
+1. Папка demo - минимальный тестовый сайт, управляемый системой.
+2. Папка multisite - собственно система управления сайтами 4Site CMS.
+	2.1. Папка multisite/cgi-bin/windows - измененные скрипты из cgi-bin для совместимости с Windows.
+3. Папка system - системный модуль для управления удаленными сайтами через SOAP.
+4. Папка SQL - SQL-файлы со структурой и содержимым БД demo-сайта и системы управления.
+
+Установка
+
+	[a] Разверните папки demo и multisite в корень сервера (demo будет находиться в {site_ROOT}, а multisite - {multisite_ROOT}). Вы также можете разместить сайт рядом с системой, тогда {site_ROOT} будет совпадать с {multisite_ROOT} и они будут использовать один VirtualHost.
+
+	[b] Настройте Apache: conf/httpd.conf (раздел, относящийся к VirtualHosts) (здесь и далее значения в фигурных скобках нужно заменить на свои):
+		# Настройка demo-сайта
+		<VirtualHost {site_IP:port}>
+			ServerAdmin {you_choose}
+			ServerName {you_choose}
+			DocumentRoot "{site_ROOT}/htdocs"
+			ScriptAlias /cgi-bin/ "{site_ROOT}/cgi-bin/"
+			ScriptAlias /SOAP/ "{site_ROOT}/cgi-bin/SOAP/"
+			ErrorLog {site_ROOT}/test-error_log
+			CustomLog {site_ROOT}/test-access_log common
+		</VirtualHost>
+		# Настройка системы управления
+		<VirtualHost {multisite_IP:port}>
+			ServerAdmin {you_choose}
+			ServerName {you_choose}
+			DocumentRoot "{multisite_ROOT}/htdocs"
+			ScriptAlias /cgi-bin/ "{multisite_ROOT}/cgi-bin/"
+			ErrorLog {multisite_ROOT}/multisite-error_log
+			CustomLog {multisite_ROOT}/multisite/access.log common
+		</VirtualHost>
+
+		Не забудьте добавить директивы Listen для портов сайта и Multisite, поставить использование пути интерпретатора Perl из реестра и настроить возможность обработки SSI-вставок в папке {site_ROOT}/htdocs (включая исполняемые SSI).
+
+	[c] Скопируйте папку 4Site из папки system дистрибутива в {Perl_PATH}/site/lib/SOAP (если Вы устанавливали модули через 'ppm', то такая папка у Вас уже появилась).
+
+	[d] Создайте БД для сайта и Multisite (можно отдельные БД, можно одну).
+
+	[e] Перейдите в папку SQL дистрибутива и выполните файл multisite.sql в БД системы и demo.sql в БД сайта.
+
+	[f] Откройте modules/Settings.pm (в папке скриптов системы) и поправьте в нём настройки Multisite. Все настройки хранятся в хеше %c и переменной $base, нужно изменить значения в кавычках.
+
+		my $base = "{multisite_ROOT}"; # нужно прописать ту же директорию, которую вы указали в настройках httpd.conf ({multisite_ROOT})
+        %c = (
+            dir => {
+        		cgi => "$base/cgi-bin/", # реальный путь к директории со скриптами (менять не нужно)
+        		cgi_ref => "/cgi-bin", # псевдоним директории со скриптами (путь в браузере)
+        		interface => "$cgi/interface/", # путь к папке шаблонов интерфейса (менять не нужно)
+        		htdocs => "$base/htdocs", # путь к директории с файлами HTML (менять не нужно)
+        	},
+
+        	mysql => {
+        		user => "{DB_user}", # пользователь mysql с широкими правами
+        		pass => "{DB_password}", # пароль пользователя mysql
+        		database => "{multisite_DB}", # название БД multisite (если вы не меняли multisite.sql, то multisite)
+        		host => "{DBhost}", # хост сервера БД (обычно localhost)
+        	},
+
+	[g] Откройте sitemodules/Settings.pm (в папке скриптов демо-сайта) и поправьте в нём настройки сайта:
+
+        my $base = "{site_ROOT}";  # нужно прописать ту же директорию, которую вы указали в настройках httpd.conf ({site_ROOT})
+        %c = (
+
+            dir => {
+                cgi => "$base/cgi-bin/", # реальный путь к директории со скриптами (менять не нужно)
+        		cgi_ref => "/cgi-bin",  # псевдоним директории со скриптами (путь в браузере)
+                pagetemplate => "$cgi/pagetemplate/", # путь к папке шаблонов элементов страниц (менять не нужно)
+        		htdocs => "$base/htdocs",  # путь к директории с файлами HTML (менять не нужно)
+                gallery => "$base/htdocs/img/gallery",  # путь к папке галереи (для модуля Галерея) (менять не нужно)
+                gallery_rel => "/img/gallery", # псевдоним галереи (путь в браузере) (менять не нужно)
+                   },
+
+        	mysql => {
+        		user => "{DB_user}", # пользователь mysql с широкими правами
+        		pass => "{DB_password}", # пароль пользователя mysql
+        		database => "{site_DB}", # название БД сайта
+        		host => "{DBhost}", # хост сервера БД (обычно localhost)
+                     },
+
+        	soap => {
+        		login => 'test', # внутрисистемное имя для доступа к сайту через SOAP (менять не нужно)
+        		passwd => 'test', # пароль для доступа через SOAP (менять не нужно)
+        	},
+
+	[h] Откройте файл ServerAuth.pl сайта из папки {site_ROOT}/cgi-bin/SOAP. После use strict; вставьте следующую строку: use lib qw({site_ROOT}/cgi-bin);
+			[h1] В строке ->dispatch_to('') отредактируйте путь к папке SOAP/4Site (должен быть '{Perl_PATH}/site/lib/SOAP/4Site')
+
+			[h2] Скопируйте файлы из подпапки windows в {multisite_ROOT}/cgi-bin.
+
+	[i] Откройте в броузере http://{multisite_IP:port}, введите логин test и такой же пароль, войдите в систему. При ошибках проверьте error_log ({multisite_ROOT}/multisite-error_log).
+
+	[j] Нажмите на кнопку "Система" сверху справа.
+		[j1] Зайдите на "Сайты" (меню слева), выберите сайт "Test (Distrib)" и исправьте его данные на фактические.
+
+	[k] Откройте в броузере http://{site_IP:port}. При ошибках проверьте error_log ({site_ROOT}/test-error_log).
+
+	[l] Поздравляем, Вы успешно установили систему 4Site!
+
+Все сообщения об ошибках и пожелания отравляйте через форму поддержки на сайте 4Site:
+http://www.4site.ru/support/feedback.shtml.

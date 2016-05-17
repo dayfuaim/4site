@@ -1,0 +1,18 @@
+<form method="POST" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="ag">
+<table class="tab_nobord">
+<tr><td class="tl">Категория</td>
+<td class="tal"><select name="gallerycategory_id"><!--#include virtual="Gallery::category_downlist"--></select></td></tr>
+<tr><td class="tl">Папка (внутри Галереи)</td>
+<td class="tal"><input type="text"  name="folder_fld" size="40"></td></tr>
+<tr><td class="tl">Сообщение<br>(имя файла/описание)</td>
+<td class="tal"><textarea name="config" rows="8" cols="40"></textarea></td></tr>
+<tr><td class="tar" colspan="2"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+<tr><td class="tl"><label for="wobig">Разрешить отсутствие<br>больших версий</label></td>
+<td class="tal"><input type="checkbox" name="wobig" id="wobig" value="1"></td></tr>
+<tr><td class="tl"><label for="wonam">Без названия</label></td>
+<td class="tal"><input type="checkbox" name="wonam" id="wonam" value="1"></td></tr>
+</table>
+<input type="hidden" name="act" value="add_bulk_gallery_pix">
+<!--#include virtual="returnact"-->
+<!--#include virtual="logpass"--></form>
+<p class="note"><b>Примечание:</b> файлы картинок (миниатюры и&nbsp;большие изображения) предварительно должны быть загружены на сайт.</p>

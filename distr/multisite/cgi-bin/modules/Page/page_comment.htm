@@ -1,0 +1,87 @@
+<h2>Выбор страницы</h2>
+<script type="text/javascript">
+function page_comment(pid) {
+	var mgr = new Ext.Updater('next',true);
+	//mgr.showLoadIndicator = '';
+	mgr.update('/pcgi/ajaxget.pl',
+			   'fn=Page::page_comment_form&id='+pid+'&_4SITESID=<!--#include virtual="_4SITESID"-->')
+	mgr.on('update', function () { do_next(pid) })
+}
+
+function do_next(pid) {
+	var mgr1 = new Ext.Updater('nextcomm',true);
+	mgr1.showLoadIndicator = '';
+	mgr1.update('/pcgi/ajaxget.pl','fn=Page::page_comment_list&id='+pid+'&_4SITESID=<!--#include virtual="_4SITESID"-->')
+}
+
+function _do_submit(frmid,page_id,act,pcid,comm,user,email) {
+	var ff = Ext.get(frmid).dom
+	alert(ff)
+	ff.page_id.value = page_id;
+	ff.spage_id.value = page_id;
+	ff.page_comment_id.value = pcid;
+	ff.username_fld.value = user;
+	ff.email_fld.value = email;
+	ff.comment_fld.value = comm;
+	ff.act.value = act;
+	ff.submit()
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="page_comment">
+		<div id="tree-div" style="overflow: auto; height: 400px; width: 400px; border: none;"></div>
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="show" value="1">
+</form>
+
+<div id="next"></div>
+<div id="nextcomm"></div>
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="epc" id="epc">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="page_id" value=""/>
+<input type="hidden" name="page_comment_id" value=""/>
+<input type="hidden" name="comment_fld" value=""/>
+<input type="hidden" name="username_fld" value=""/>
+<input type="hidden" name="email_fld" value=""/>
+<input type="hidden" name="spage_id" value=""/>
+<input type="hidden" name="act" value=""/>
+</form>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript">
+var Tree = Ext.tree;
+
+var tree = new Tree.TreePanel({
+	el: 'tree-div',
+	hlDrop: false,
+	autoScroll: true,
+	animate: false,
+	enableDD: false,
+	rootVisible: false,
+	containerScroll: true,
+	lines: true,
+	hideBorders: true,
+	loader: new Tree.TreeLoader()
+});
+
+var json = <!--#include virtual="page_select_tree"-->;
+
+// set the root node
+var root = new Tree.AsyncTreeNode({
+	text: '_ROOT_',
+	draggable: false,
+	allowDrop: false,
+	expanded: true,
+	expandable: false,
+	id: 'c0',
+	children: json
+});
+tree.setRootNode(root);
+Ext.onReady(function(){
+    tree.render();
+});
+</script>

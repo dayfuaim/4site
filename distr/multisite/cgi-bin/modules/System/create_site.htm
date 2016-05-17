@@ -1,0 +1,28 @@
+<h3>Начальные данные</h3>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="site">
+<table class="tab_nobord">
+<tr>
+	<td class="tr">Папка (лат. стр.)</td>
+	<td class="tal"><input type="text"  name="folder" size="32" title="Название папки, [A-Za-z0-9_]+ :)"/></td>
+</tr>
+<tr>
+	<td class="tr">Название сайта</td>
+	<td class="tal"><input type="text"  name="site_fld" size="32" title="Название сайта"/></td>
+</tr>
+<tr>
+	<td class="tr">URL (без http://)</td>
+	<td class="tal"><input type="text"  name="host_fld" size="32" title="URL (без http://)"/></td>
+</tr>
+<tr>
+	<td colspan="2"><h3>Клонируемый сайт &laquo;Template (ALT)&raquo;</h3></td>
+</tr>
+<tr>
+	<td colspan="2" class="tar"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"/></td>
+</tr>
+
+</table>
+
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="act" value="create_site"/>
+</form>

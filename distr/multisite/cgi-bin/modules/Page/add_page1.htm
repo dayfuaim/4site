@@ -1,0 +1,63 @@
+<SCRIPT>
+function massub() {
+	document.add_page1.act.value="add_page2";
+	submit('add_page1');
+}
+
+function do_act(form,page_id) {
+	var ff = eval('document.forms.'+form)
+	ff.master_page_id.value=page_id;
+	ff.page_id.value=page_id;
+	ff.spage_id.value=page_id;
+	ff.submit()
+}
+
+function add_page1(pid) {
+	do_act('add_page1',pid)
+}
+</SCRIPT>
+<h3>Выберите родительскую страницу</h3>
+<form method="post" name="add_page1" id="add_page1" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="master_page_id" value="">
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="returnact" value="add_page2">
+<div id="tree-div" style="overflow: auto; height: 600px; width: 400px; border: none;"></div>
+<!--#include virtual="logpass"-->
+</form>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript">
+var Tree = Ext.tree;
+
+var tree = new Tree.TreePanel({
+	el: 'tree-div',
+	hlDrop: true,
+	autoScroll: true,
+	animate: false,
+	enableDD: false,
+	rootVisible: true,
+	containerScroll: true,
+	lines: true,
+	hideBorders: true,
+	loader: new Tree.TreeLoader()
+});
+
+var json = <!--#include virtual="page_select_tree"-->;
+
+// set the root node
+var root = new Tree.AsyncTreeNode({
+	text: '<b>Первый уровень</b> (рубрика)',
+	draggable: false,
+	allowDrop: false,
+	expanded: true,
+	expandable: false,
+	id: 'c0',
+	listeners: { 'click' : function() { add_page1(0) } },
+	children: json
+});
+tree.setRootNode(root);
+Ext.onReady(function(){
+    tree.render();
+});
+</script>

@@ -1,0 +1,13 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="ford">
+<table class="tab_nobord">
+	<tr>
+		<td class="tl">Сайт</td>
+		<td class="tal"><select name="site_id" onchange="submit('ford')"><option>-- Выберите --</option><!--#include virtual="sitemirror_downlist"--></select></td>
+	</tr>
+</table>
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="show" value="1">
+</form>
+
+<!--#include virtual="mod_by_site_update_list"-->

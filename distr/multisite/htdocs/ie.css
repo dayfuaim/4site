@@ -1,0 +1,43 @@
+.divtree{width:80%;position:absolute;display:block;}
+.out{background-color: #fff;
+width:100%;}
+.over{background-color: yellow;
+width:100%;}
+
+ul.tree {
+	margin: 0px 0px 0px 18px;
+	padding: 2px 0 1px 0;
+}
+ul.tree li{font:normal 75%/100% Verdana,Geneva,sans-serif;}
+ul.tree ul.tree li {font:normal 100%/100% Verdana,Geneva,sans-serif;}
+.box1, .box2, .box3 {display:inline;
+position:absolute;
+z-index:200;}
+.box1{right:3px;}
+.box2{right:30px;}
+.box3{right:57px;}
+
+img.disabled {
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+}
+
+.dsbl {
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+}
+
+/* For GalleryCategory list */
+.op {
+	display: ;
+}
+
+input{padding:1px 3px;}
+input[type="checkbox"] {
+	margin:0 !important;
+	padding:0 !important;
+	border:none !important;
+	/*border:1px solid #efc5a0 !important;
+	/*width: 13px !important*/
+}
+input[type="image"] {
+	border: none !important
+}

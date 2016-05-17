@@ -1,0 +1,49 @@
+<script>
+function chtitle() {
+	var ff = document.forms.edit_page2;
+	if (ff.at.checked==true) {
+		ff.title_fld.disabled=true
+		Ext.get('att').dom.className="tr_col2"
+	} else {
+		ff.title_fld.disabled=false
+		Ext.get('att').dom.className="tr_col3"
+	}
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="edit_page2">
+<!--#include virtual="page_edit"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="act" value="edit_page">
+<input type="hidden" name="returnact" value="edit_page">
+</form>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/core.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/form.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/panel.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/button.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/resizable.css" />
+<script type="text/javascript" src="/js/ext/build/locale/ext-lang-ru_cp1251.js"></script>
+<script type="text/javascript" src="/fckeditor/fckeditor.js"></script>
+<script type="text/javascript" language="JavaScript">
+var ResizableEx = {
+    init : function(){
+		var DT = new Ext.form.DateField({
+			applyTo: 'exp_fld',
+			name: 'exp_fld',
+			width: 100,
+			format: 'd.m.Y',
+			allowBlank: true
+		})
+	}
+};
+
+Ext.EventManager.onDocumentReady(InitCtrls,ResizableEx,true);
+
+function InitCtrls() {
+	ResizableEx.init()
+<!--#include virtual="wysiwyg"-->
+}
+</script>

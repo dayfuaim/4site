@@ -1,0 +1,52 @@
+<form method="post" name="period" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<table border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+		<td class="tl">Пользователь</td>
+		<td class="tal"><select name="user_id"><option value="">-- все --</option><!--#include virtual="System::user_downlist"--></select>
+	</tr>
+	<tr>
+		<td class="tl">Сайт</td>
+		<td class="tal"><select name="site1_id"><option value="">-- все --</option><!--#include virtual="System::site_downlist"--></select>
+	</tr>
+
+<tr><td colspan="2">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="9" class="news-green" height="3"><img src="/img/1pix.gif" border="0" height="3"></td></tr>
+<tr class="news-green">
+<td width="10"><img src="/img/1pix.gif" border="0" width="10"></td>
+<td class="tl">с</td>
+<td><!--#include virtual="stdate_find"-->&nbsp;</td>
+<td><a href="#" onclick="showCal('period','stdate'); return false"><img src="/img/4site/data.gif" alt="Задать дату" border="0" id="tstart" style="margin-bottom:10px;"></a></td>
+<td class="tl">&nbsp;</td>
+<td class="tl">по</td>
+<td><!--#include virtual="enddate_find"-->&nbsp;</td>
+<td><a href="#" onclick="showCal('period','enddate'); return false"><img src="/img/4site/data.gif" alt="Задать дату" border="0" id="tend" style="margin-bottom:10px;"></a></td>
+<td width="10"><img src="/img/1pix.gif" border="0" width="10"></td>
+</tr>
+</table>
+
+</td></tr>
+<tr><td height="13"><img src="/img/1pix.gif" border="0" height="13"></td></tr>
+<tr><td colspan="2" class="tr"><input type="Image" src="/img/but/find1.gif" title="Найти" class="but" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></table>
+
+<input type="hidden" name="show" value="1">
+<!--#include virtual="returnact"-->
+<!--#include virtual="logpass"-->
+</form>
+
+<!--#include virtual="System::actionstat_list"-->
+
+<div id="_f" style="position: absolute; width: 440px; height: 450px; overflow: auto; border: 1px solid Green; top: 200px; left: 200px; z-index: 100; background-color: White; display: none"><img src="/img/but/delete_s1.gif" title="Закрыть" class="but" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)" style="float: right" onclick="f_f.hide()"><div id="_form"></div>
+</div>
+
+<script type="text/javascript">
+var f_f = Ext.get('_f');
+f_f.setVisibilityMode(Ext.Element.DISPLAY)
+function showForm(elt,id) {
+	var mgr = new Ext.Updater(elt,true);
+	mgr.update('/pcgi/show_form.pl?id='+id)
+	mgr.on('update',function() { f_f.show()	})
+}
+</script>

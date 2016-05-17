@@ -1,0 +1,14 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="ff">
+<!--#include virtual="logpass"-->
+<table class="tab_nobord" cellpadding="0" cellspacing="0">
+	<tr class="tr_col1">
+		<td class="tl">Сайт</td>
+		<td class="tal"><select name="site_id" onchange="submit('ff')"><option>-- Выберите --</option><!--#include virtual="site_downlist"--></select></td>
+	</tr>
+<!--#include virtual="modbysite_downlist"-->
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="returnact" value="table_valid">
+</form>
+</table>
+<!--#include virtual="table_validate"-->
+

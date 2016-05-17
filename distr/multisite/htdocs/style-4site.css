@@ -1,0 +1,810 @@
+body {background-color:#fff;
+margin:0;
+border-top:1px solid #fff;
+scrollbar-3dlight-color:#efc5a0;
+scrollbar-arrow-color:#cd7b39;
+scrollbar-darkshadow-color:#fbe7af;
+scrollbar-face-color:#fbe7af;
+scrollbar-track-color:#fbfbeb;
+scrollbar-highlight-color:#fbe7af;
+scrollbar-shadow-color:#fbfbeb;
+scrollbar-base-color:#fbfbeb;}
+
+#tree-div{margin:10px 0;}
+.info4site{border:none;}
+
+/*edit page*/
+.x-tree-node-el{clear: both; width: 100%; /*padding-right: 1px; overflow-x: hidden;*/}
+.left-tree{float:left;
+width:85%;
+text-align:left;}
+.right-tree{float:right;
+padding:0 5px;
+width:20px;}
+.left-tree span{font-size:11px;}
+
+/*календарь*/
+ul.x-menu-list, .x-menu-list-item, .x-menu-date-item{list-style-position:outside !important;
+list-style-type:none !important;
+list-style-image:none !important;
+padding:0 !important;
+margin:0 !important;}
+.x-layer{border:1px solid #5a9e4a !important;}/*граница календар€*/
+/*кнопки*/
+.x-date-left, .x-date-middle, .x-date-right{background:#5a9e4a !important;}
+.x-date-left a{background-image: url(/img/but-l1.gif) !important;}
+.x-date-right a{background-image: url(/img/but-r1.gif) !important;}
+.x-date-mp-btns button {background:#5a9e4a !important;
+border:1px solid;
+border-color: #235218 #000055 #000055 #235218 !important;}
+.x-date-mp-ybtn a {overflow:hidden !important;
+width:15px !important;
+height:15px !important;
+cursor:pointer !important;
+background:transparent url(/img/tool-sprites.gif) no-repeat !important;
+display:block !important;
+margin:0 auto !important;}
+.x-date-mp-ybtn a.x-date-mp-next {background-position:0 -120px !important;}
+.x-date-mp-ybtn a.x-date-mp-next:hover {background-position:-15px -120px !important;}
+.x-date-mp-ybtn a.x-date-mp-prev {background-position:0 -105px !important;}
+/*-*/
+.x-date-selected a{background:#d6f0cb !important;/*выбранный день*/
+border:1px solid #59ae47 !important;}
+.x-date-today a{border: 1px solid #d17100 !important;/*текущий день*/
+background:#d6f0cb !important;}
+.x-date-inner a:hover, .x-date-inner .x-date-disabled a:hover{background:#d6f0cb !important;}/*наведенный день*/
+/*таблица календар€*/
+table.x-date-inner{border:1px solid #f4ddaf !important;
+border-collapse:collapse !important;}
+table.x-date-inner td{border:1px solid #f4ddaf !important;
+border-collapse:collapse !important;}
+table.x-date-inner th{background:#9d9d9d !important;
+color:#fff !important;
+border:1px solid #f4ddaf !important;
+border-collapse:collapse;}
+/*bg кнопкок*/
+.x-date-bottom{
+border-top:1px solid #f1f1f1 !important;
+background:#f1f1f1 !important;}
+.x-date-mp-btns {background:#f1f1f1 !important;}
+.x-date-mp-btns td {border-top:1px solid #59ae47 !important;}
+/*ссылки мес€цев и годов*/
+td.x-date-mp-month a,td.x-date-mp-year a {color:#000 !important;}
+td.x-date-mp-month a:hover,td.x-date-mp-year a:hover {color:#000 !important;
+background: #d6f0cb !important;}
+/*-*/
+td.x-date-mp-sep {border-right:1px solid #59ae47 !important;}/*права€ граница*/
+td.x-date-mp-sel a {background: #d6f0cb !important;/*выбранные год и мес€ц*/
+border:1px solid #59ae47 !important;}
+
+
+/*заголовки*/
+h1{font:normal 120%/100% Arial, Helvetica, sans-serif !important;
+text-align:left !important;
+color:#CA722A !important;
+margin:0 !important;
+padding:0 0 5px 7px !important;}
+.info4site h2{font:normal 100%/110% Arial, Helvetica, sans-serif;
+text-align:left;
+color:#4C9442;
+margin:10px 0 5px 0;
+padding:10px 0 10px 4px;}
+h3, .info4site h3{font:bold 85%/100% Arial,Helvetica,sans-serif;
+text-align:left;
+color:#da8c30;
+margin:15px 0 5px 0;
+padding:5px 0 5px 4px;}
+
+/*параграфы*/
+.info4site p{font:normal 100%/140% Verdana,Geneva,sans-serif;
+color:#000;
+padding:0;
+margin:7px 0 7px 4px;
+text-align:left;}
+.info4site p.txt{font:normal 70%/140% Verdana,Geneva,sans-serif;}
+.info4site p.txt-big{font:normal 75%/140% Verdana,Geneva,sans-serif;}/*на стр. "”далить"*/
+.info4site p.note{font:normal 70%/130% Verdana,Geneva,sans-serif;/*заметка*/
+text-align:left;
+padding:0 4px 3px 4px;
+margin:0;}
+.info4site p.note-big{font:normal 75%/130% Verdana, Geneva,sans-serif;
+text-align:left;
+padding:3px 10px 3px 4px;
+margin:0;}
+.info4site p.note-italic{font:normal 70%/130% Verdana,Geneva,sans-serif;/*заметка*/
+font-style:italic;
+text-align:left;
+padding:0 4px 3px 4px;
+margin:0;}
+p.tl{font-size:70%;}
+
+.info4site pre{font: normal 80%/120% "Lucida Console", monospace;}
+.debug{color: Red;
+margin: 2px;
+text-align:left;
+padding:3px 5px;
+border:1px solid #b6b4ad;
+background-color:#fdfefd;}
+.notice{margin: 2px;
+text-align:left;
+padding:3px 5px;
+border:1px solid #b6b4ad;
+background-color:#fdfefd;}
+
+.num{font:bold 75%/130% Verdana, Geneva,sans-serif;/*в инфоблоках "Ќаследовать", номер типа*/
+margin:0;padding:0;
+vertical-align: middle;}
+code{font: normal 80%/140% "Courier New", Courier, monospace;/*тег code*/
+color:#000;
+padding:0;
+margin:5px 0 5px 3px;
+text-align:left;}
+.alert {font-weight: bold;/*предупреждение*/
+color: #b80000;}
+
+/*станд.ссылка*/
+a{font-family:Verdana,Geneva,sans-serif;}
+a.link{color:#373D33;}
+/*a.link:visited{color:#636061;}*/
+a.link:hover{color:#cc7b3b;
+text-decoration:none;}
+
+/*станд.таблица*/
+table.tab{border:1px solid #72bf62;
+border-collapse:collapse;
+margin:0 0 10px 4px;}
+
+table.tab2 th, table.tab3 th, table.tab th, table.tab .td_left, table.tab .td_right {font:bold 70%/130% Verdana,Geneva,sans-serif;
+color:#cc7f3f;
+text-align:left;
+padding:3px 5px;
+margin:0;
+background-color:#fff;
+border:1px solid #72bf62;}
+/*текст в €чейке*/
+.tb{font:normal 70%/130% Verdana,Geneva,sans-serif;/*по центру*/
+text-align:center;
+padding:4px 5px;
+margin:0;}
+.tl{font:normal 70%/130% Verdana,Geneva,sans-serif;/*слева*/
+text-align:left;
+padding:4px 5px;
+margin:0;}
+/* for Drag'n'Drop table */
+.tl-mid{font:normal 70%/130% Verdana,Geneva,sans-serif;/*слева*/
+text-align:left;
+vertical-align:middle;
+padding:3px 4px;
+margin:0;}
+.tr{font:normal 70%/130% Verdana,Geneva,sans-serif;/*справа*/
+text-align:right;
+padding:4px 5px;
+margin:0;}
+/*цвет строк*/
+table.tab tr.th2{background-color:#AAD8B0;}
+table.tab tr.tr_col2{background-color:#cbebcf;}
+table.tab tr.tr_col1{background-color:#e2ebe3;}
+table.tab tr.tr_col3{background-color:#f4ede1;}
+table.tab tr.tr_col4{background-color:#ebdfca;}
+label.disabled{color: Silver;}
+.redstar{color: Red;}
+
+/*таблица без границ*/
+table.tab_nobord{border:none;
+border-collapse:collapse;
+margin-bottom:10px;}
+table.tab_nobord td{border:none;}
+/*внутр.таблица в станд.таблице*/
+table.tab2{border:1px solid #fff;
+border-collapse:collapse;}
+table.tab2 td, table.tab td table.tab2 td table.tab_nobord td table.tab td table.tab2 td {border:1px solid #fff;}
+table.tab_nobord td table.tab td table.tab2 td {border:1px solid #fff;}
+
+/*таблица дл€ фотогалереи*/
+table.tab_gal{border:none;
+border-collapse:collapse;
+margin:10px 0 5px 0;
+width:600px;}
+table.tab_gal td{border:none;}
+table.tab_gal td table.tab{width:98%;
+margin:0 0 0 4px;}
+
+/*таблица в красной рамке*/
+div.redblock {
+	width:500px;
+	height:400px;
+	overflow:auto;
+	border:1px solid #b80000;
+	background-color:#f4ede1;
+	padding:0 3px 3px 0;
+}
+div.redblock h3 {
+	color:#000;
+	margin:0;
+	padding:0 0 5px 4px;
+}
+div.closepic { padding:2px 2px 5px; }
+
+/*таблица в рыжей рамке*/
+div.orangeblock {
+	width:500px;
+	height:400px;
+	overflow:auto;
+}
+
+/*текст в €чейке*/
+.tl-main{font:normal 75%/130% Verdana,Geneva,sans-serif;/*на стр. списка сайтов*/
+text-align:left;
+padding:3px 35px 3px 2px;
+margin:0;}
+.tl-gre{font:normal 70% Verdana,Geneva,sans-serif;/*на стр. картинок разделов*/
+text-align:left;
+padding:0 0 0 4px;
+margin:0;
+color:#78bd68;}
+.total1{font:oblique 75%/130% Verdana,Geneva,sans-serif;/*итого*/
+text-align:left;
+padding:3px 4px;
+margin:0;}
+.total2{font:oblique bold 75%/130% Verdana,Geneva,sans-serif;/*итого: цифра*/
+text-align:left;
+padding:3px 4px;
+margin:0;}
+
+/*дл€ строки tr.tr-col3*/
+.tl-pad{font:normal 70%/130% Verdana,Geneva,sans-serif;
+text-align:left;
+padding:5px 4px;
+margin:0;}
+
+/*местоположение в €чейке*/
+.tal{text-align:left;/*слева*/
+padding:5px;}
+.tar{text-align:right;/*справа*/
+padding:5px;}
+.ta{text-align:center;/*по центру*/
+padding:5px;}
+
+/*таблица наличи€ мест*/
+.cont{background-color:#c2e4f0;}
+.free{background-color:#9fde9f;}
+.sold{background-color:#efb1b9;}
+.none{background-color:#fff;}
+.bor{border:1px solid #72bf62;}
+.cont, .free, .sold, .none{font:normal 12px Verdana,Geneva,sans-serif;
+text-align:center;}
+table.diap{border:none !important;
+border-collapse:collapse;
+width:100%;
+height:100%;}
+table.diap td{border:none !important;
+border-collapse:collapse;
+width:50%;
+padding-top:0;
+padding-bottom:0;}
+.tab5{border:1px solid #fff !important;
+border-collapse:collapse;}
+.tab5 td{border:1px solid #aaaaaa !important;
+border-collapse:collapse;
+padding-top:0;
+padding-bottom:0;}
+.tab5 td.tl{font-size:12px !important;}
+.tab5 th{font-size:11px !important;}
+img.holy{margin-top:6px;}
+
+/*таблица дл€ стр.логина*/
+.tab3{border:1px solid #72bf62;
+border-collapse:collapse;
+margin-bottom:10px;}
+table.tab3 td{border:none;}
+table.tab3 td#1 {padding:8px 5px 8px 0;
+background-color:#fff;
+border-bottom:1px solid #72bf62;}
+.tab4{border:1px solid #fff;
+border-collapse:collapse;
+background-color:#CBEBCF;}
+table.tab4 td{border:none;
+padding:2px 8px;}
+table.tab4 td.tr{padding:0 3px 0 8px;}
+
+/*дл€ €чейки, где input[submit]*/
+td.pad{padding:5px;}
+/*удаление, в €чейке с input[checkbox]*/
+.del-red{background-color:#ffe1e1;
+width:25px;
+padding:5px;
+text-align:center;}
+/*обыч.€чейка с input[checkbox]*/
+.usual{width:25px;
+text-align:center;}
+
+/*ѕортфолио*/
+.count{font:normal 75%/130% Verdana,Geneva,sans-serif;
+text-align:right;
+color:#000;
+padding:2px 10px 2px 2px;
+margin:0;}
+tr.beige{background-color:#F4EDE1;}
+
+/*редактир.новосей*/
+.libo{font:normal 80%/130% Verdana,Geneva,sans-serif;
+color:#4F974B;
+text-align:left;
+padding:7px 2px 7px 10px;
+margin:0;}
+.news-green{background-color:#E2EBE3;}
+
+/*top-таблица шаблона*/
+td.top-left{background-color:#e0e4e1;
+height:30px;}
+table.top{background-color:#E0E4E1;
+width:100%;}
+td.top{font:bold 70%/140% Verdana,Geneva,sans-serif;
+color:#000;
+margin:0;
+padding:3px 5px 3px 12px;
+text-align:left;}
+td.line-bot{background:#E0E4E1 url(/img/line-top.gif) repeat-x bottom left;}
+td.tmenu{background:#EEFCED;
+border:1px solid #58AE47;}
+td.tmenu-off{background:#e0e4e1;
+border:1px solid #e0e4e1;
+cursor:pointer;
+}
+td.tmenu-on{background:#EEFCED;
+border:1px solid #58AE47;
+cursor:pointer;
+}
+td.tmenu-down{background:#daecd9;
+border:1px solid #478a39;
+cursor:pointer;
+}
+img.top {margin:3px 7px 0 0;}
+p.tmenu{font:normal 70%/120% Verdana,Geneva,sans-serif;
+color:#000;
+margin:0;
+padding:0 7px;
+text-align:center;}
+p.tmenu a{color:#000;
+text-decoration:none;
+width:100%;}
+p.tmenu a:hover{color:#000;
+text-decoration:none;}
+
+td.lpic {background:url(/img/butt1.gif) no-repeat right bottom;
+height:30px;
+width:2px;}
+td.cpic{background:#E0E4E1 url(/img/butt2.gif) repeat-x bottom left;
+height:30px;}
+td.rpic{background:#E0E4E1 url(/img/butt3.gif) no-repeat right bottom;
+height:30px;
+width:4px;}
+/*-*/
+
+/*лева€ сторона шаблона, логотип*/
+td.left{background-color:#E0E4E1;
+width:15%;}
+img.logo{margin:0 0 15px 0;}
+
+/*меню избранного*/
+table.favor{background-color:#F2F7F3;
+border:1px solid #5AAD45;}
+td.favor{font:normal 70%/120% Verdana,Geneva,sans-serif;
+color:#000;
+margin:0;
+padding:6px 3px;
+text-align:left;}
+td.nofavor{font:normal 70%/120% Verdana,Geneva,sans-serif;
+color:#808080;
+margin:0;
+padding:6px 3px;
+text-align:left;}
+td a.favor{font:normal 100%;
+color:#000;
+margin:0;padding:0;
+text-decoration:none;}
+td .favor1{font:bold 70%/110% Verdana,Geneva,sans-serif;
+color:#000;
+margin:0;
+padding:6px 3px 3px 3px;
+text-align:left;}
+td .favor2{font:normal 70%/110% Verdana,Geneva,sans-serif;
+color:#000;
+margin:0;
+padding:2px 3px 2px 15px;
+text-align:left;}
+td a.favor2{font:normal 100%;
+color:#000;
+margin:0;padding:0;
+text-decoration: none;}
+
+/*левое меню*/
+table.lmenu {
+	width:100%;
+	border-top:1px solid #86C65F;
+	border-right:1px solid #3D7939;
+	border-bottom:1px solid #3D7939;
+	background-color:#F7F9E4;
+	margin-bottom:3px;
+}
+.lmenu_inner {
+	width:100%;
+	background-color:#F7F9E4;
+}
+td.lmenu{background-color:#59AE47;
+border-bottom:1px solid #3D7839;}
+tr.green{background-color:#9BFA84;}
+td.green{background-color:#D6F0CB;}
+tr.open{background-color:#D6F0CB;}
+p.lmenu1{font:bold 70%/120% Verdana,Geneva,sans-serif;
+color:#fff;
+margin:0;
+padding:3px 7px;
+text-align:left;}
+p a.lmenu1{font:bold 100%;
+color:#fff;
+margin:0;padding:0;
+text-decoration:none;}
+p.lmenu2{font:normal 70%/120% Verdana,Geneva,sans-serif;
+color:#000;
+margin:0;
+padding:3px 7px 3px 0;
+text-align:left;}
+b.lmenu2{color:#C97128;}
+
+/*центр.обл. шаблона*/
+table.center{width:100%;
+height:100%;
+margin:0}
+td.rbord0{background:url(/img/line-left.gif) repeat-y left top;
+padding:13px 17px 15px 17px;}
+
+/*таблица дл€ заголовка 1 уровн€*/
+table.head1 {
+	width: 100%;
+	margin-bottom: 25px;
+}
+td.head1 {
+	width: 100%;
+	border-bottom: 1px solid #41BA35;
+}
+
+/*информеры*/
+table.inform{border:1px solid #35842c;
+background-color:#ecffe9;
+margin-left:4px;}
+table.error{border:1px solid #bd0505;
+background-color:#ffe9e9;
+margin-left:4px;}
+table.warning{border:1px solid #D49404;
+background-color:#FBFFE6;
+margin-left:4px;}
+td.tl-big{font:normal 80%/130% Verdana,Geneva,sans-serif;
+color:#000;
+text-align:left;
+padding:4px;
+margin:0;}
+span.red{color:#BF5226;}
+
+/*модули, гл.стр. сайта*/
+table.mod{border: 1px solid #5AAD45;
+background-color:#fff;
+margin: 5px 5px 0 0;}
+td.mod{font:normal 70%/120% Verdana,Geneva,sans-serif;
+color:#000;
+margin:0;
+padding:3px 2px 3px 4px;
+text-align:left;}
+.tl-green{font:bold 75%/130% Verdana,Geneva,sans-serif;
+color:#5C9B53;
+text-align:left;
+padding:2px;
+margin:0;}
+a.tl-green{font:bold 100%;
+color:#347C24;
+text-decoration:none;
+padding:0;margin:0;}
+.img-main{margin:10px 10px 3px 0;}
+
+/*списки*/
+ul{list-style: circle outside;
+margin: 0 0 0 45px;
+text-indent: 0;}
+ul.gpic{list-style:none;
+margin:0;
+text-indent:0;}
+ol{list-style:decimal outside;
+margin:0 0 0 50px;
+text-indent:0;}
+li{font:normal 70%/100% Verdana,Geneva,sans-serif;
+text-align:Left;
+margin:5px 0;
+text-indent:0;}
+.gpic li{cursor: move;}
+ol ul li, ol ol li, ul ul li{font:normal 100%/100% Verdana,Geneva,sans-serif;
+text-align:Left;
+text-indent:0;
+margin:4px 0;}
+.list{font:normal 70%/100% Verdana,Geneva,sans-serif;
+text-align:left;
+list-style:decimal outside;
+margin:4px 0 4px 25px;
+text-indent:0;}
+
+/*копирайт*/
+table.copy{width:100%;
+margin:20px 0 5px 15px;}
+p.copy{font:normal 55%/130% Verdana,Geneva,sans-serif;
+color:#333231;
+padding:0 0 3px 0;
+margin:0;}
+p a.copy{font-size:100%;
+color:#6375B4;
+padding:0;margin:0;}
+p a.copy:visited{color:#6375B4;}
+p a.copy:hover{color:#283D87;}
+
+/*формы*/
+form {display: inline !important;
+margin:0;}
+.tal input, select{font: normal 70% Verdana,Geneva,sans-serif;/*input[text]*/
+text-align:left !important;
+margin:3px 0;
+border:1px solid #efc5a0;
+color:#000 !important;}
+input.radio{margin:0 0 0 10px;
+border:none;}
+input.checkbox, input.box{margin:0;padding:0;
+border:none;}
+textarea{font:normal 75%/120% Verdana,Geneva,sans-serif;
+text-align:left;
+padding:1px 3px;
+margin:3px 0;
+border:1px solid #efc5a0;
+scrollbar-3dlight-color:#efc5a0;
+scrollbar-arrow-color:#cd7b39;
+scrollbar-darkshadow-color:#fbe7af;
+scrollbar-face-color:#fbe7af;
+scrollbar-track-color:#fbfbeb;
+scrollbar-highlight-color:#fbe7af;
+scrollbar-shadow-color:#fbfbeb;
+scrollbar-base-color:#fbfbeb;}
+input.but{border:none;}
+
+/*список сайтов вверху*/
+select.top {padding:3px; margin:0px;}
+select.top option{font:normal 100% Verdana,Geneva,sans-serif;
+color:#367E28;
+margin:0;padding:0;}
+select.top optgroup{color:#367E28;}
+
+/*дл€ jvsript: function change(layer)*/
+.displayNone{display:none;}
+
+/*меню-дерево, таблица*/
+.ltab{width:100%;
+display:block;
+border:none;}
+.ltab img{border:none;
+text-align: middle;}
+.spacer{width:10px;
+height:19px;
+text-align:left;}
+.checks{position:relative;
+top:0;
+float:right;
+height:19px;
+min-width:72px;
+text-align:right;
+z-index:100;}
+.tab_checks{border-collapse:collapse;
+margin:0;}
+.td_l,.td_r{font:bold 75%/130% Verdana,Geneva,sans-serif;
+color:#cc7f3f;
+text-align:center;
+padding:0 1px;
+margin:0;}
+a.leaf {font: bold 75%;
+text-decoration:underline;
+color:#000;
+display:block;
+width:inherit;
+padding:1px 0;}
+a.leaf:hover{text-decoration:none;
+color:#D08418;
+background:#D6F0CB;}
+.leafsel {background-color:#D6F0CB;}
+/*дл€ кнопки "»зменить"*/
+.tar_tree{text-align:right;
+padding:15px 0 0 0;
+margin:0;}
+
+/*меню-дерево, стили ссылок*/
+td.green{background-color:#D6F0CB;
+font:normal 75% Verdana,Geneva,sans-serif;
+text-decoration:none;
+color:#D08418;
+padding:0;margin:0;
+cursor:pointer;}
+td.white{font:normal 75% Verdana,Geneva,sans-serif;
+background-color:#fff;
+text-decoration:underline;
+color:#000;
+padding:0;margin:0;
+cursor:pointer;}
+a.tree { font-weight: normal;
+	font-size: 110%;
+	text-decoration: underline;
+color:#000;
+padding:0;margin:0;}
+a.tree:hover{text-decoration:none;}
+td.page1{font:bold 75%/130% Verdana,Geneva,sans-serif;
+color:#cc7f3f;
+text-align:left;
+padding:3px;
+margin:0;
+border-left:1px solid #72bf62;
+border-top:1px solid #72bf62;
+border-bottom:1px solid #72bf62;}
+td.page2{font:bold 75%/130% Verdana,Geneva,sans-serif;
+color:#cc7f3f;
+text-align:left;
+padding:3px;
+margin:0;
+border:1px solid #72bf62;}
+/*--*/
+
+/* Inserted DAY 2006-01-05 */
+.lmenu_inner,
+.mod ul{list-style:none;
+margin:0;
+padding:0;
+text-indent:0;}
+.lmenu_inner li.lmenu2,
+.mod ul li.lmenu2 {width: 100%;
+margin:3px 3px 3px 0;}
+.lmenu_inner li.open{background-color:#D6F0CB;
+width:100%;
+margin:0;
+padding:3px 3px 3px 0;
+text-indent:0;}
+.lmenu_inner li.lmenu2 a,
+.mod ul li.lmenu2 a{font:normal 100% Verdana,Geneva,sans-serif;
+display:block;
+width:100%;
+color:#000;
+padding:3px;
+text-align:left;
+text-indent:7px;
+text-decoration:none;
+cursor:pointer;
+}
+.lmenu_inner li.lmenu2 a:hover,
+.mod ul li.lmenu2 a:hover{background-color:#9BFA84;}
+
+/*редактир.рубрики в галерее*/
+div.gal{margin:0;}
+div.gal ul{list-style:inside url(/img/4site/menu/folder.gif);
+margin:0 4px;
+padding:0;}
+div.gal ul li{font:normal 80%/130% Arial,Helvetica,sans-serif;
+text-align:Left;
+margin:6px 0;
+padding:0;
+text-indent:0;}
+div.gal ul ul{list-style:inside url(/img/4site/menu/page.gif);
+margin:3px 0 0 17px;
+padding:0;}
+div.gal ul ul li{font:normal 100%/130% Arial,Helvetica,sans-serif;
+text-align:Left;
+margin:5px 0;
+padding:0;
+text-indent:0;}
+
+/* pre {
+	font-family: Consolas, Courier New, mono !important;
+} */
+
+/* ќпредел€ем стили дл€ подсвечивани€ строк */
+.out{background-color: #fff;
+width:100%;}
+.over { background-color: yellow;
+width:100%;}
+
+/*дерево*/
+ul.tree li {text-indent: 0px;
+	list-style: none;
+	padding:2px 0;
+	margin:0;
+	display: block;
+	cursor: pointer;
+	cursor: hand;
+}
+.tree img[src="/img/4site/menu/open.gif"],
+.tree img[src="/img/4site/menu/close.gif"] {
+	margin-left: -18px;
+	float: left;
+	cursor: pointer;
+	cursor: hand;
+}
+img.pleft {margin-left:-2px;}
+
+/* For GalleryCategory list */
+.cl {
+	display: none;
+}
+
+/* Link beneath the form head */
+a.headlink {
+	display: block;
+	min-width: 50px;
+	border: 1px outset DarkGray;
+	padding: 4px;
+	margin: 0 0 0 4px;
+	float: right;
+	text-decoration: none;
+	text-align: center;
+}
+
+a.headlink:hover {
+	background-color: #EFEFEF;
+	border: 1px outset Gray;
+}
+
+a.headlink-clk {
+	display: block;
+	min-width: 50px;
+	padding: 5px 3px 3px 5px;
+	margin: 0 0 0 4px;
+	float: right;
+	text-decoration: none;
+	text-align: center;
+	background-color: Silver;
+	border: 1px inset Gray;
+}
+
+a.headlink-clk:hover {
+	background-color: #EFEFEF;
+	border: 1px inset Gray;
+}
+
+#fl {
+	min-width: 50px;
+	position: absolute;
+	top: -100px;
+	right: 20px;
+}
+
+.multfr {
+	height: 141px !important;
+	overflow: auto !important;
+}
+
+.multfr1 {
+}
+
+.multfr tr td,
+.multfr1 tr td {
+	padding: 2px;
+}
+
+/* */
+.OK {
+	color: Green;
+}
+.notOK {
+	color: #F00;
+	font-weight: bold;
+}
+
+.nbr {
+	white-space: nowrap
+}
+.tab2 .nobord {
+	border-collapse: collapse;
+}
+.tab2 .nobord td {
+	border: none medium;
+	border-collapse: collapse;
+	padding: 2px
+}

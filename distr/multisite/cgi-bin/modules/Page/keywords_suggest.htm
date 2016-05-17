@@ -1,0 +1,71 @@
+<SCRIPT>
+function massub() {
+	document.add_page1.act.value="add_page2";
+	submit('add_page1');
+}
+
+function do_act(form,page_id) {
+	var ff = eval('document.forms.'+form)
+	ff.page_id.value=page_id;
+	ff.spage_id.value=page_id;
+	ff.submit()
+}
+
+function keywords_suggest(pid) {
+	var mgr = new Ext.Updater('_sugg',true);
+	//mgr.showLoadIndicator = '';
+	mgr.update('/pcgi/ajaxget.pl','fn=Page::keyword_suggest&id='+pid+'&_4SITESID=<!--#include virtual="_4SITESID"-->')
+}
+</SCRIPT>
+<table width="100%" class="tab_nobord">
+	<tr>
+		<td width="70%" valign="top">
+<h3>Выберите страницу</h3>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="keywords_suggest">
+<div id="tree-div" style="overflow: auto; height: 600px; width: 400px; border: none;"></div>
+<!--#include virtual="logpass"-->
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="show" value="1">
+<!--#include virtual="returnact"-->
+</td>
+<td valign="top">
+	<div id="_sugg"></div>
+</td>
+</tr>
+</table>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript">
+var Tree = Ext.tree;
+
+var tree = new Tree.TreePanel({
+	el: 'tree-div',
+	hlDrop: true,
+	autoScroll: true,
+	animate: false,
+	enableDD: false,
+	rootVisible: false,
+	containerScroll: true,
+	lines: true,
+	hideBorders: true,
+	loader: new Tree.TreeLoader()
+});
+
+var json = <!--#include virtual="page_select_tree"-->;
+
+// set the root node
+var root = new Tree.AsyncTreeNode({
+	text: '_ROOT_',
+	draggable: false,
+	allowDrop: false,
+	expanded: true,
+	expandable: false,
+	id: 'c0',
+	children: json
+});
+tree.setRootNode(root);
+Ext.onReady(function(){
+    tree.render();
+});
+</script>

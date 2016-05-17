@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+	<meta http-equiv="Pragma" content="No-Cache">
+	<meta http-equiv="Expires" content="-1">
+	<head>
+		<title>Ошибка 4Site CMS 2.2</title>
+<link href="/style-4site.css" rel="stylesheet" type="text/css">
+<link href="/favicon.ico" rel="shortcut icon">
+<SCRIPT language="JavaScript" src="/js/klayers.js"></script>
+<SCRIPT language="JavaScript" src="/js/script.js"></script>
+<SCRIPT language="JavaScript">
+<!--
+I   = (document.all) ? true:false;
+DOM = ((document.getElementById)&&(!I))?true:false;
+var oldlayer = "";
+function submit(formname) {
+	// ВАЖНО! В некоторых случаях не работает при вызове из другой формы.
+	// В этих случаях теряет выбранное ранее значение SELECT-а(-ов?) этой формы.
+	eval( 'document.forms.' + formname + '.submit()');
+}
+
+function sub_del(formnm, act) {
+	eval( 'document.forms.' + formnm + '.returnact.value="'+act+'"')
+	submit(formnm);
+}
+
+//-->
+</SCRIPT>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0" bottommargin="0" onload="document.getElementById('loading').style.display='none'">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+
+<!-- TOP -->
+<tr valign="top">
+<td class="top-left" valign="bottom" align="center"><img src="/img/logo1.gif" alt="4Site CMS" width="187" height="30" border="0"></td>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" class="top">
+<tr>
+<td width="3" align="left" valign="bottom" rowspan="2"><img src="/img/corner.gif" width="4" height="2" border="0"></td>
+<!-- select site -->
+<td>&nbsp;</td>
+<!-- select site -->
+<td width="10"><img src="/img/1pix.gif" width="10" height="1" border="0"></td>
+<td width="39%" valign="bottom">
+<table border="0" cellpadding="0" cellspacing="0" align="right" height="30">
+<tr>
+<!--td width="2"><img src="/img/1pix.gif" width="2"></td>
+<td onmouseover="hiliteTop(this)" onmouseout="unliteTop(this)" onclick="clickTop(this)" style="cursor: hand;"><p class="tmenu"><img src="/img/system-active.gif" border="0" align="absmiddle" class="top">Система</p></td>
+<td width="4"><img src="/img/1pix.gif" width="4"></td-->
+
+<td width="2"><img src="/img/1pix.gif" width="2"></td>
+<td onmouseover="hiliteTop(this)" onmouseout="unliteTop(this)" onclick="clickTop(this)" style="cursor: hand;"><p class="tmenu"><img src="/img/help.gif" border="0" align="absmiddle" class="top">Помощь</p></td>
+<td width="4"><img src="/img/1pix.gif" width="4"></td>
+
+<!--td width="2"><img src="/img/1pix.gif" width="2"></td>
+<td onmouseover="hiliteTop(this)" onmouseout="unliteTop(this)" onclick="clickTop(this);showHideFAV(this)" style="cursor: hand;"><p class="tmenu"><img src="/img/favorite.gif" border="0" align="absmiddle" class="top">Избранное</p></td-->
+<td width="4"><img src="/img/1pix.gif" width="4"></td>
+</tr></table>
+</td><td width="20px"><img src="/img/1pix.gif" width="20" border="0"></td></tr>
+<tr><td colspan="6" class="line-bot" width="2"><img src="/img/1pix.gif" width="2"></td></tr></table>
+</td></tr>
+<!-- TOP -->
+
+<!-- LEFT -->
+<tr valign="top"><td class="left">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+<tr><td height="62" valign="top" align="center"><img src="/img/logo2.gif" alt="4Site CMS" width="187" height="62" border="0" class="logo"></td></tr>
+<tr valign="top"><td>
+
+</td></tr>
+<tr><td valign="bottom">
+<!-- copyright -->
+<table border="0" cellpadding="0" cellspacing="0" class="copy">
+<tr><td rowspan="2"><img src="/img/copy-pic.gif" alt="Copyright ООО «Метод Лаб»" width="36" height="36" border="0"></td>
+<td nowrap><p class="copy">&#169 2003-2008<br>ООО &laquo;Метод Лаб&raquo;</p></td></tr>
+<tr><td><p class="copy"><a href="http://www.4site.ru" class="copy">www.4site.ru</a></p></td>
+</tr></table>
+<!-- copyright -->
+</td></tr></table>
+</td>
+<!-- LEFT -->
+
+<!-- CENTER -->
+<td valing="top" class="rbord0">
+<table border="0" cellpadding="0" cellspacing="0" class="center">
+<tr valign="top">
+<td valign="middle">
+
+<table border="0" cellpadding="0" cellspacing="0" class="error" align="center" width="380">
+	<tr>
+		<td class="tl-big" width="42" valign="top"><img src="/img/error.gif" width="32" height="32" border="0" align="absmiddle" hspace="5"></td>
+		<td colspan="2" class="tl-big" width="313"><b><!--#include virtual="error"--></b><br><span style="float: right"><!--#include virtual="bugReport"--></span></td>
+		<td align="right" valign="top" width="25"><img src="/img/error-close.gif" width="13" height="13" border="0"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="left" width="20"><input type="Image" src="/img/but/enter1.gif" title="Зайти снова" class="but" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)" style="margin:10px;" onclick="javascript:location.href='/';"></td>
+		<td colspan="2" align="right" width="20"><input type="Image" src="/img/but/back1.gif" title="Вернуться" class="but" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)" style="margin:10px;" onclick="javascript:history.go(-1);"></td>
+	</tr>
+</table>
+
+<!-- info -->
+</td><td width="15"><img src="/img/1pix.gif" width="15"></td></tr></table>
+</td>
+<!-- CENTER -->
+</tr></table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<script type="text/javascript" language="JavaScript">
+function checkEmpty(obj) {
+	obj.value.replace(/^[ ]+/,'')
+	if (!obj.value || /^\s+$/.test(obj.value)) {
+		$('but').disabled = true
+	} else {
+		if (obj.value.length>=3) {
+			$('but').disabled = false
+		} else {
+			$('but').disabled = true
+		}
+	}
+}
+</script>
+<!--#include virtual="Gallery::gallery_cat"-->
+<script type="text/javascript">
+checkEmpty($('gallerycategory_fld'));
+</script>

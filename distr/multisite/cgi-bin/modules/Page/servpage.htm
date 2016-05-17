@@ -1,0 +1,14 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="sp">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<table class="nobord">
+	<tr><td class="tl">Шаблон</td><td class="tal"><select name="template_id"><!--#include virtual="template_downlist"--></select></td></tr>
+	<tr><td class="tl">Контент</td><td class="tal"><textarea  name="content_fld" rows="8" cols="60"></textarea></td></tr>
+	<tr><td class="tl">Путь к файлу</td><td class="tal"><input type="text"  name="url_fld" size="40"></td></tr>
+	<tr><td>&nbsp;</td><td class="tar"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td></tr>
+</table>
+<input type="hidden" name="act" value="add_servpage">
+</form>
+
+
+<!--#include virtual="servpage_list"-->

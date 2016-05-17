@@ -1,0 +1,61 @@
+<script>
+function fs_open(d,t,frm,fld) {
+	showFS()
+	var fs = document.forms.fsel;
+	fs.d.value = d
+	fs.t.value = t
+	fs.form.value = frm
+	fs.fld.value = fld
+	submit('fsel')
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site_popup.pl" name="fsel" target="fs">
+<!--#include virtual="logpass_user"-->
+<input type="hidden" name="site" value="256">
+<input type="hidden" name="s" value="<!--#include virtual="site_id"-->">
+<input type="hidden" name="d" value="">
+<input type="hidden" name="t" value="">
+<input type="hidden" name="form" value="">
+<input type="hidden" name="fld" value="">
+<input type="hidden" name="returnact" value="fileselect">
+</form>
+
+<h2>Редактирование модуля '<!--#include virtual="modname"-->'</h2>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="med">
+<!--#include virtual="returnact"-->
+<!--#include virtual="logpass"-->
+<table class="tab_nobord" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tl">Картинка главная</td>
+		<td class="tal"><input type="text" name="pic_fld" size="40" value="<!--#include virtual="modpic"-->">&nbsp;<a href="#" onclick="javascript:fs_open('/img/modules','gif|jpg|png','med','pic_fld'); return false;"><img src="/img/4site/folder_open.gif" border="0" align="absmiddle"></a></td>
+	</tr>
+	<tr>
+		<td class="tl">Картинка заголовочная</td>
+		<td class="tal"><input type="text" name="headpic_fld" size="40" value="<!--#include virtual="modheadpic"-->">&nbsp;<a href="#" onclick="javascript:fs_open('/img/head','gif|jpg|png','med','headpic_fld'); return false;"><img src="/img/4site/folder_open.gif" border="0" align="absmiddle"></a></td>
+	</tr>
+	<tr><td class="tar" colspan="2"><input type="Image" src="/img/but/change1.gif" title="Изменить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td></tr>
+</table>
+<input type="hidden" name="act" value="edit_module">
+<input type="hidden" name="module_id" value="<!--#include virtual="modid"-->">
+</form>
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="moded">
+<!--#include virtual="returnact"-->
+<!--#include virtual="logpass"-->
+<table class="tab" cellspacing="0" cellpadding="0" border="0"><tr><td>
+<table class="tab2" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<th>Название</th>
+<th>Заголовок</th>
+<th>Файл</th>
+<th alt="Видна в меню" title="Видна в меню"><img src="/img/visible.gif" border="0" hspace="4" alt="Видна в меню" title="Видна в меню"></th>
+<th alt="Подключена" title="Подключена"><img src="/img/active.gif" border="0" hspace="4" alt="Подключена" title="Подключена"></th>
+<th alt="Удалить" title="Удалить"><img src="/img/del.gif" border="0" hspace="4" alt="Удалить" title="Удалить"></th>
+<!--#include virtual="forms_list"-->
+</tr>
+<tr class="tr_col3">
+	<td colspan="6" class="tar"><input type="Image" src="/img/but/change1.gif" title="Изменить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+</tr>
+</table></td></tr></table>
+<input type="hidden" name="act" value="edit_module_forms">
+</form>

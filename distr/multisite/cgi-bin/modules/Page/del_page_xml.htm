@@ -1,0 +1,53 @@
+<SCRIPT>
+function massub() {
+	document.del_page.show.value="1";
+	submit('del_page');
+}
+
+function do_act(form,page_id,content) {
+	var ff = eval('document.forms.'+form)
+	ff.page_id.value=page_id;
+	ff.spage_id.value=page_id;
+	ff.pagecontent_id.value=content;
+	ff.show.value = 1;
+	ff.submit()
+}
+
+function chkclk(id) {
+	var chld = getEl('tree').dom.getElementsByTagName('input')
+	var myself = getEl('d'+id).dom
+	for (var i=0; i<chld.length; i++) {
+		var inp = chld[i]
+		if (inp.type=='checkbox') {
+			if (inp.getAttribute('p')==id) {
+				inp.checked = myself.checked
+			}
+		}
+	}
+}
+
+</SCRIPT>
+<p class="txt"><b>ВАЖНОЕ ЗАМЕЧАНИЕ:</b> По умолчанию страницы удалются вместе с подчинёнными. Если нужно оставить конкретные подчинённые страницы, сначала переподчините их, а потом удалите родителя.</p>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="del_page">
+<!--#include virtual="Page::page_select_xml"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="pagecontent_id" value="">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="act" value="del_page_xml">
+<input type="hidden" name="show" value="">
+<!--#include virtual="returnact"-->
+</form>
+<script language="JavaScript">
+var b = document.getElementById('attr_but')
+if (b) {
+	b.style.display='none'
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<!--#include virtual="page_del"-->
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="page_id" value="<!--#include virtual="page_id"-->">
+<input type="hidden" name="act" value="del_page">
+<input type="hidden" name="show" value="0"></form>

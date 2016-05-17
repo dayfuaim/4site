@@ -1,0 +1,72 @@
+<h2>Выберите страницу</h2>
+
+<div id="tree-div" style="overflow: auto; height: 600px; width: 400px; border: none;"></div>
+<input type="Image" src="/img/but/change1.gif" title="Изменить" class="but" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)" onclick="return treeSer('edit_master','tree')">
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="edit_master" id="edit_master">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="act" value="reorder_page" />
+<input type="hidden" name="tree" id="tree" value="" />
+</form>
+
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript">
+var Tree = Ext.tree;
+
+var tree = new Tree.TreePanel({
+	el: 'tree-div',
+	hlDrop: true,
+	autoScroll: true,
+	animate: false,
+	enableDD: true,
+	rootVisible: false,
+	containerScroll: true,
+	lines: true,
+	hideBorders: true,
+	loader: new Tree.TreeLoader()
+});
+
+var json = <!--#include virtual="page_select_master_tree"-->;
+
+// set the root node
+var root = new Tree.AsyncTreeNode({
+	text: '_ROOT_',
+	draggable: false,
+	allowDrop: true,
+	expanded: true,
+	expandable: false,
+	id: 'c0',
+	children: json
+});
+tree.setRootNode(root);
+Ext.onReady(function(){
+    // render the tree
+	//tree.disable();
+    tree.render();
+	//tree.enable();
+    //root.expand();
+});
+
+function treeSer(frm,fld) {
+	var r = tree.getRootNode();
+	tree.disable();
+	var str = '';
+	var s = new Array();
+	r.eachChild(function (thisel) {
+		_setPath(s,thisel)
+	})
+	Ext.get(frm).dom.elements[fld].value = s.join(', ')
+	tree.enable();
+	submit(frm)
+	return false
+}
+
+function _setPath(ss,elt) {
+	ss.push(elt.getPath())
+	elt.eachChild(function (chld) {
+		_setPath(ss,chld)
+	})
+}
+</script>

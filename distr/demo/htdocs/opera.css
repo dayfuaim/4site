@@ -1,0 +1,7 @@
+/*меню 2,3 уровней*/
+ul.menu2 li{font-size:85%;}
+ul.menu2 ul li{font-size:75%;}
+
+/*карта сайта*/
+ul.map ul ul li{font-size:85%;}
+ul.map ul ul ul li{font-size:75%;}

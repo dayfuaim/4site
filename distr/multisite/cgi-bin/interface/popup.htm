@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Pragma" content="No-Cache">
+<meta http-equiv="Expires" content="-1">
+<title><!--#include virtual="formname"-->&nbsp;&#151;&nbsp;4Site CMS 2.2</title>
+<link rel="stylesheet" type="text/css" href="/fileselect.css">
+<link rel="stylesheet" type="text/css" href="/style-4site.css">
+<link href="/favicon.ico" rel="shortcut icon">
+<SCRIPT language="JavaScript" src="/js/klayers.js"></script>
+<SCRIPT language="JavaScript" src="/js/esc.js"></script>
+<SCRIPT language="JavaScript" src="/js/prototype.js"></script>
+<SCRIPT language="JavaScript">
+<!--
+I   = (document.all) ? true:false;
+DOM = ((document.getElementById)&&(!I))?true:false;
+var oldlayer = "";
+function submit(formname)
+{
+eval( 'document.forms.' + formname + '.submit()');
+}
+function sub_del(formnm, act) {
+	eval( 'document.forms.' + formnm + '.returnact.value="'+act+'"')
+	submit(formnm);
+}
+
+//-->
+</SCRIPT>
+
+</head>
+<body leftmargin="10" rightmargin="10" topmargin="5" bottommargin="5" marginwidth="10" onload="document.getElementById('loading').style.display='none';">
+<table id="loading" style="position: absolute; left: 400px; top: 300px; width: 200px; height: 40px; background-color: White; border: 1px solid Red; margin: 10px 10px 10px 10px;">
+	<tr><td valign="middle" align="center" color="Green">Подождите, форма загружается...</td></tr>
+</table>
+</td></tr>
+<!-- верх -->
+<!-- середина -->
+<tr><td valign="top">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" height="95%">
+<!-- средняя таблица -->
+<tr><td valign="top" colspan="2">
+
+<!-- середина -->
+<!--#include virtual="result"-->
+<!--#include virtual="error"-->
+<!--#include virtual="form"-->
+<!-- середина -->
+</table>
+</td></tr>
+
+</table>
+</body>
+</html>

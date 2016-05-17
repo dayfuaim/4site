@@ -1,0 +1,66 @@
+<SCRIPT>
+function do_act(form,page_id) {
+	var ff = Ext.get(form).dom
+	ff.page_id.value=page_id;
+	var mgr = new Ext.Updater('next',true);
+	//mgr.showLoadIndicator = '';
+	mgr.update('/pcgi/xmlget_cache.pl','id='+page_id+'&_4SITESID=<!--#include virtual="_4SITESID"-->')
+}
+
+function cache_page(pid) {
+	var mgr = new Ext.Updater('next',true);
+	//mgr.showLoadIndicator = '';
+	mgr.update('/pcgi/ajaxget.pl','fn=Page::page_cache_list&id='+pid+'&_4SITESID=<!--#include virtual="_4SITESID"-->')
+}
+</SCRIPT>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+	<td width="50%" valign="top">
+		<h2>Выберите страницу</h2>
+		<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="cache_page" id="cache_page">
+		<div id="tree-div" style="overflow: auto; height: 600px; width: 400px; border: none;"></div>
+		<!--#include virtual="logpass"-->
+		<input type="hidden" name="spage_id" value="">
+		<input type="hidden" name="page_id" value="">
+<!--#include virtual="returnact"-->
+		</form>
+	</td>
+	<td width="70%" valign="top"><div id="next">
+	</div></td>
+<tr>
+</table>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript">
+var Tree = Ext.tree;
+
+var tree = new Tree.TreePanel({
+	el: 'tree-div',
+	hlDrop: false,
+	autoScroll: true,
+	animate: false,
+	enableDD: false,
+	rootVisible: false,
+	containerScroll: true,
+	lines: true,
+	hideBorders: true,
+	loader: new Tree.TreeLoader()
+});
+
+var json = <!--#include virtual="page_select_tree"-->;
+
+// set the root node
+var root = new Tree.AsyncTreeNode({
+	text: '_ROOT_',
+	draggable: false,
+	allowDrop: false,
+	expanded: true,
+	expandable: false,
+	id: 'c0',
+	children: json
+});
+tree.setRootNode(root);
+Ext.onReady(function(){
+    tree.render();
+});
+</script>

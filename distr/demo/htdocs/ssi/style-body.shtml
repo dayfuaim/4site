@@ -1,0 +1,7 @@
+<link href="/style.css" rel="stylesheet" type="text/css">
+<!--#exec cgi="/pcgi/css.pl"-->
+<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript" src="/js/klayers.js"></script>
+<script type="text/javascript" src="/js/prototype.js"></script>
+</head>
+<body bottommargin="0" leftmargin="0" rightmargin="0" topmargin="0">

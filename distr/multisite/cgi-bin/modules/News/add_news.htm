@@ -1,0 +1,76 @@
+<form method="post" name="period" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="an">
+<table class="tab_nobord">
+<tr><td class="tl">Дата и время</td>
+<td class="tal"><input type="text" name="date_fld" id="date_fld" size="10" value="<!--#include virtual="date"-->" title="Дата">
+<input type="text"  name="time_fld" size="10" value="<!--#include virtual="now_time"-->" title="Время"></td></tr>
+<tr><td class="tl">Группа</td>
+<td class="tal"><select name="news_group_id"><option>-- Без группы --</option><!--#include virtual="news_group_downlist"--></select></td></tr>
+<tr><td class="tl">Заголовок</td>
+<td class="tal"><input type="text"  name="head_fld" size="60"></td></tr>
+<tr><td class="tl">Сообщение<br><span id="_count"></span></td>
+<td class="tal">
+	<textarea id="tarea" name="body_fld" onchange="countSym(this.id)" onkeypress="countSym(this.id)"></textarea>
+</td></tr>
+<tr><td class="tar" colspan="2"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)" onclick="return check_news('period')"></td>
+<input type="hidden" name="act" value="add_news">
+<!--#include virtual="returnact"--></tr></table>
+<!--#include virtual="logpass"--></form>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/core.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/form.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/panel.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/button.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/resizable.css" />
+<script type="text/javascript" src="/js/ext/build/locale/ext-lang-ru_cp1251.js"></script>
+<script type="text/javascript" src="/fckeditor/fckeditor.js"></script>
+<script type="text/javascript" language="JavaScript">
+function check_news(frm) {
+	var ff = eval('document.forms.'+frm)
+	if (ff.head_fld.value.length<3) {
+		alert("Слишком короткий заголовок!\n(длина меньше 3 символов)");
+		return false
+	}
+	if (ff.body_fld.value.length<3) {
+		alert("Слишком короткое тело новости!\n(длина меньше 3 символов)");
+		return false
+	}
+	return true
+}
+
+function countSym(fldName) {
+	var d = document
+	var ff = d.forms['period']
+	var fld = ff.elements[fldName]
+	d.getElementById('_count').innerText = fld.value.length
+}
+var ResizableEx = {
+    init : function(){
+        var dwrapped = new Ext.Resizable('tarea', {
+            wrap: true,
+            pinned: true,
+			width: 700,
+            height: 500,
+            minWidth: 200,
+            minHeight: 50,
+            dynamic: true
+        });
+		var DT = new Ext.form.DateField({
+			applyTo: 'date_fld',
+			name: 'date_fld',
+			width: 100,
+			format: 'd.m.Y',
+			allowBlank: true
+		})
+	}
+};
+
+Ext.EventManager.onDocumentReady(InitCtrls,ResizableEx,true);
+
+function InitCtrls() {
+	ResizableEx.init()
+<!--#include virtual="wysiwyg"-->
+}
+</script>

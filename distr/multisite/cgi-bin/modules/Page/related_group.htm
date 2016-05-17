@@ -1,0 +1,16 @@
+<h2>Добавление группы связанных страниц</h2>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="rg">
+<table class="tab_nobord">
+<tr><td class="tl">Название группы</td>
+<td class="tal"><input type="text" class="input_txt" name="related_group_fld" size="30"></td></tr>
+<tr><td class="tl">Страница привязки</td>
+<td class="tal"><select name="page_id"><option>-- --</option><!--#include virtual="page_downlist"--></select></td></tr>
+<tr><td class="tar" colspan="2"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+<input type="hidden" name="act" value="add_related_group">
+<input type="hidden" name="returnact" value="related_group"></tr></table>
+<!--#include virtual="logpass"--></form>
+
+<h2>Редактирование групп связанных страниц</h2>
+
+<!--#include virtual="related_group_list"-->
+

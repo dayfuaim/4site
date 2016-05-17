@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>New interace layout (YUI)</title>
+<script type="text/javascript" src="js/yui/utilities.js"></script>
+<script type="text/javascript" src="js/yui/yui-ext/yui-ext.js"></script>
+<link rel="stylesheet" type="text/css" href="js/yui/yui-ext/resources/css/reset-min.css" />
+<link rel="stylesheet" type="text/css" href="js/yui/yui-ext/resources/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="js/yui/yui-ext/resources/css/div.css" />
+<link rel="stylesheet" type="text/css" href="_style-4site.css" />
+<link href="/favicon.ico" rel="shortcut icon" />
+<script type="text/javascript">
+var Layout = function(){
+    return {
+        init : function(){
+            var layout = new YAHOO.ext.BorderLayout(document.body, {
+                west: {
+                    split: true,
+                    initialSize: 210,
+                    collapsible: true,
+                    titlebar: false,
+                    minSize: 180,
+                    maxSize: 350
+                },
+                center: {
+                    autoScroll: true
+                }
+            });
+
+            layout.beginUpdate();
+			var innerLayoutNav = new YAHOO.ext.BorderLayout('nav', {
+				south: {
+					split: false,
+					initialSize: 72,
+					autoScroll: false,
+					collapsible: false,
+					titlebar: false
+				},
+				center: {
+					autoScroll: true
+				}
+			});
+
+			var innerLayoutContent = new YAHOO.ext.BorderLayout('content_main', {
+                north: {
+                    split: true,
+                    collapsible: true,
+                    initialSize: 35,
+					minSize: 35,
+                    maxSize: 60
+                },
+				center: {
+					autoScroll: true
+				}
+			});
+
+			innerLayoutNav.add('south', new YAHOO.ext.ContentPanel('footer'));
+			innerLayoutNav.add('center', new YAHOO.ext.ContentPanel('leftmenu'));
+			innerLayoutContent.add('north', new YAHOO.ext.ContentPanel('header'));
+			innerLayoutContent.add('center', new YAHOO.ext.ContentPanel('content'));
+
+			layout.add('west', new YAHOO.ext.NestedLayoutPanel(innerLayoutNav));
+			layout.add('center', new YAHOO.ext.NestedLayoutPanel(innerLayoutContent));
+
+            layout.endUpdate();
+        }
+    }
+}();
+
+YAHOO.ext.EventManager.onDocumentReady(Layout.init, Layout, true);
+</script>
+</head>
+<body>
+
+<div id="container">
+
+    <div id="nav" class="ylayout-inactive-content"></div>
+
+	<div id="leftmenu" class="lmenu">
+		<table border="0" cellpadding="0" cellspacing="0" width="99%">
+		<tr><td height="92" style="padding-top:4px;"><img src="img/logo.gif" width="187" height="92" alt="" /></td></tr>
+		<tr valign="top"><td>
+		<script>
+		function hiliteTop(obj) {
+			if (obj.className=='tmenu') { return }
+			obj.className = 'cpic'
+			obj.previousSibling.className = 'lpic'
+			obj.nextSibling.className = 'rpic'
+		}
+
+		function unliteTop(obj) {
+			if (obj.className=='tmenu') { return }
+			obj.className = ''
+			obj.previousSibling.className = ''
+			obj.nextSibling.className = ''
+		}
+
+		function clickTop(obj) {
+			if (obj.className=='tmenu') {
+				obj.className = 'cpic'
+				obj.previousSibling.className = 'lpic'
+				obj.nextSibling.className = 'rpic'
+			} else {
+				obj.className = 'tmenu'
+				obj.previousSibling.className = ''
+				obj.nextSibling.className = ''
+			}
+		}
+
+		function showHideFAV(obj) {
+			var d = document;
+			var fav = $('_fav')
+			if (fav.style.visibility=='visible') {
+				fav.style.visibility = 'hidden'
+			} else {
+				fav.style.visibility = 'visible'
+			}
+		}
+
+		function hilite(obj) {
+			if (obj.className=='open') { return }
+			obj.className = 'green'
+		}
+
+		function unlite(obj) {
+			if (obj.className=='open') { return }
+			obj.className = ''
+		}
+
+		var toggled = 0;
+		function toggleSection(id) {
+			var o = $('m'+id);
+			var im = $('im'+id);
+			var s = im.src
+			if (o.style.display=='none') {
+				o.style.display = ''
+				im.src = s.replace(/close/,'open')
+			} else {
+				o.style.display = 'none'
+				im.src = s.replace(/open/,'close')
+			}
+		}
+
+		var toggledM = 0;
+		function toggleSectionM(id) {
+			var o = $('mm'+id);
+			var main = layer('main')
+			var t = layer('tdm'+id)
+			var a = layer('am'+id)
+			var obj = layer('mm'+id)
+			var im = $('imm'+id);
+			var s = im.src
+			var mozOffsetX = (navigator.appName!='Microsoft Internet Explorer')?9:(-6)
+			var mozOffsetY = (navigator.appName!='Microsoft Internet Explorer')?13:(-2)
+			if (o.style.display=='none') {
+				o.style.display = ''
+				obj.setLeft(main.getLeft()+t.getLeft()+a.getLeft()+196+mozOffsetX)
+				obj.setTop(main.getTop()+t.getTop()+a.getTop()+48+mozOffsetY)
+				im.src = s.replace(/close/,'open')
+			} else {
+				o.style.display = 'none'
+				im.src = s.replace(/open/,'close')
+			}
+		}
+		</script>
+		<!--#include virtual="left_menu"-->
+		</td></tr></table>
+	</div>
+
+	<div id="footer" class="ylayout-inactive-content">
+		<!-- copyright -->
+		<table cellpadding="0" class="copy">
+		<tr><td rowspan="2"><img src="/img/copy-pic.gif" alt="Copyright ООО «Метод Лаб»" width="36" height="36" border="0"></td>
+		<td nowrap><p class="copy">Copyright &#169 2003-2006<br>ООО &laquo;Метод Лаб&raquo;</p></td></tr>
+		<tr><td><p class="copy"><a href="http://www.4site.ru" class="copy">www.4site.ru</a></p></td>
+		</tr>
+		</table>
+		<!-- copyright -->
+	</div>
+
+	<div id="content_main" class="ylayout-inactive-content"></div>
+
+    <div id="header" class="ylayout-inactive-content">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+		<!-- select site -->
+		<td><table border="0" cellpadding="0" cellspacing="0">
+		<tr><td class="top" nowrap>Сайт:</td>
+		<td><!--#include virtual="toplist"--></td>
+		<td width="4"><img src="/img/1pix.gif" width="4" /></td>
+		<td class="tmenu-off" onMouseOver="this.className='tmenu-on'" onMouseDown="this.className='tmenu-down'" onMouseOut="this.className='tmenu-off'"><p class="tmenu"><!--#include virtual="link2site"--></p></td>
+		</tr></table></td>
+		<!-- select site -->
+		<td width="10"><img src="/img/1pix.gif" width="10" height="1" border="0" /></td>
+		<td width="39%" valign="middle">
+		<table border="0" cellpadding="0" cellspacing="0" align="right" height="30">
+		<tr>
+		<td width="2"><img src="/img/1pix.gif" width="2" /></td>
+		<td class="tmenu-off" onmouseover="this.className='tmenu-on'" onmouseout="this.className='tmenu-off'" onclick="this.className='tmenu-down';submit('sys')" style="cursor: hand;">
+		<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="sys">
+		<input type="hidden" name="site" value="256">
+		<!--#include virtual="logpass_user"-->
+		<!--#include virtual="system_button"-->
+		</form>
+		</td>
+		<td width="4"><img src="/img/1pix.gif" width="4" /></td>
+		<!--td width="2"><img src="/img/1pix.gif" width="2"></td>
+		<td onmouseover="hiliteTop(this)" onmouseout="unliteTop(this)" onclick="clickTop(this)" style="cursor: hand;"><p class="tmenu"><img src="/img/help.gif" border="0" align="absmiddle" class="top">Помощь</p></td>
+		<td width="4"><img src="/img/1pix.gif" width="4"></td-->
+		<td width="2"><img src="/img/1pix.gif" width="2" /></td>
+		<td class="tmenu-off" onmouseover="this.className='tmenu-on'" onmouseout="this.className='tmenu-off'" onclick="this.className='tmenu-down';showHideFAV(this)" style="cursor: hand;"><p class="tmenu"><img src="/img/favorite.gif" border="0" align="absmiddle" class="top" />Избранное</p></td>
+		<td width="4"><img src="/img/1pix.gif" width="4" /></td>
+		</tr></table>
+		</td><td width="20px"><img src="/img/1pix.gif" width="20" border="0" /></td></tr>
+		<!--tr><td colspan="6" class="line-bot" width="2"><img src="/img/1pix.gif" width="2" /></td></tr-->
+		</tr></table>
+    </div>
+
+	<div id="content" class="ylayout-inactive-content">
+		<!-- menu head -->
+		<table border="0" cellpadding="0" cellspacing="0" class="head1">
+		<tr valign="bottom">
+		<td width="53"><img src="/img/common_head.gif" border="0"></td>
+		<td class="head1"><h1>Список модулей сайта <!--#include virtual="sitename"--></h1></td>
+		</tr></table>
+		<!-- menu head -->
+		<!-- info -->
+		<table border="0" cellpadding="0" cellspacing="0" class="favor" id="_fav" style="position: absolute; top: 32px; right: 24px; visibility: hidden">
+		<!--#include virtual="fav_button"-->
+		<!--#include virtual="favorites"-->
+		</table>
+		<!--#include virtual="switchBoard"-->
+		<!-- info -->
+	</div>
+
+</div>
+
+</body>
+</html>

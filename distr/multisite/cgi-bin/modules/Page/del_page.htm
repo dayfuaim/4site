@@ -1,0 +1,57 @@
+<SCRIPT>
+function do_act(form,page_id) {
+	var ff = eval('document.forms.'+form)
+	ff.page_id.value=page_id;
+	ff.spage_id.value=page_id;
+	ff.submit()
+}
+
+function del_page(pid) {
+	if (confirm("Внимание!\n\nВместе с выбранной будут удалены все подчиненные ей страницы!\n\nДействительно удалить страницу?")) {
+		do_act('del_page',pid)
+	}
+}
+</SCRIPT>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="del_page">
+<div id="tree-div" style="overflow: auto; height: 600px; width: 400px; border: none;"></div>
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="act" value="del_page">
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="spage_id" value="">
+</form>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript">
+var Tree = Ext.tree;
+
+var tree = new Tree.TreePanel({
+	el: 'tree-div',
+	hlDrop: true,
+	autoScroll: true,
+	animate: false,
+	enableDD: false,
+	rootVisible: false,
+	containerScroll: true,
+	lines: true,
+	hideBorders: true,
+	loader: new Tree.TreeLoader()
+});
+
+var json = <!--#include virtual="page_select_tree"-->;
+
+// set the root node
+var root = new Tree.AsyncTreeNode({
+	text: '_ROOT_',
+	draggable: false,
+	allowDrop: false,
+	expanded: true,
+	expandable: false,
+	id: 'c0',
+	children: json
+});
+tree.setRootNode(root);
+Ext.onReady(function(){
+    tree.render();
+});
+</script>

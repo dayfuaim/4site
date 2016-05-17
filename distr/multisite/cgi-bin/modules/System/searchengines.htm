@@ -1,0 +1,37 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="se">
+<table class="tab_nobord">
+	<tr>
+		<td class="tl">Название в Системе</td>
+		<td class="tal"><input type="text"  name="name_fld" size="20"></td>
+	</tr>
+	<tr>
+		<td class="tl">URL<br>(с {ARG})</td>
+		<td class="tal"><input type="text"  name="url_fld" size="40"></td>
+	</tr>
+	<tr>
+		<td class="tl" title="Строка, которой в HTML-коде отмечается каждый новый найденный результат">RegExp<br>для строки-счётчика</td>
+		<td class="tal"><textarea name="countregexp_fld" cols="40" rows="5" style="font-family: Monaco,'Courier New Cyr'"></textarea></td>
+	</tr>
+	<tr>
+		<td class="tl" title="Строка, которой в HTML-коде представлен URL найденной страницы">RegExp<br>для строки-URL</td>
+		<td class="tal"><textarea name="foundregexp_fld" cols="40" rows="5" style="font-family: Monaco,'Courier New Cyr'"></textarea></td>
+	</tr>
+	<tr>
+		<td class="tl"><label for="utf">Unicode</label></td>
+		<td class="tal"><input type="checkbox" name="unicode_fld" value="1" id="utf"></td>
+	</tr>
+	<tr>
+		<td class="tl" title="Текст подпрограммы, генерирующей строку запроса для новой страницы результатов поиска">PageCode</td>
+		<td class="tal"><textarea name="pagecode_fld" rows="5" cols="40" style="font-family: Monaco,'Courier New Cyr'"></textarea></td>
+	</tr>
+	<tr>
+		<td class="tl">Сайт</td>
+		<td class="tal"><input type="text"  name="" size="20"></td>
+	</tr>
+</table>
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="show" value="1">
+</form>
+
+<!--#include virtual="se_list"-->

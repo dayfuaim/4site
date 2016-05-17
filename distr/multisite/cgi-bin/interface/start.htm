@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+	<meta http-equiv="Pragma" content="No-Cache">
+	<meta http-equiv="Expires" content="-1">
+	<head>
+		<title>Сайты&nbsp;&#151;&nbsp;4Site CMS 2.2</title>
+<link href="/style-4site.css" rel="stylesheet" type="text/css">
+<!--#include virtual="css"-->
+<link href="/favicon.ico" rel="shortcut icon">
+<SCRIPT language="JavaScript" src="/js/klayers.js"></script>
+<SCRIPT language="JavaScript">
+<!--
+I   = (document.all) ? true:false;
+DOM = ((document.getElementById)&&(!I))?true:false;
+var oldlayer = "";
+function submit(formname) {
+	// ВАЖНО! В некоторых случаях не работает при вызове из другой формы.
+	// В этих случаях теряет выбранное ранее значение SELECT-а(-ов?) этой формы.
+	eval( 'document.forms.' + formname + '.submit()');
+}
+function change(layer) {
+	if (I) { var curlayer = eval("document.all['"+layer+"']"); }
+	if (DOM) { var curlayer = eval("document.getElementById('"+layer+"')"); }
+	if (curlayer.className == 'ord') { curlayer.className = 'displayNone' }
+	else {
+		if (oldlayer) {
+			if (I) { temp_l = eval("document.all['"+oldlayer+"']"); }
+			if (DOM) { temp_l = eval("document.getElementById('"+oldlayer+"')"); }
+			temp_l.className = 'displayNone';
+		}
+		curlayer.className = 'ord';
+		oldlayer = layer;
+	}
+}
+function sub_del(formnm, act) {
+	eval( 'document.forms.' + formnm + '.returnact.value="'+act+'"')
+	submit(formnm);
+}
+
+//-->
+</SCRIPT>
+
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0" bottommargin="0">
+<table id="loading" border="0" cellpadding="0" cellspacing="0" class="inform" height="32" style="position: absolute; left: 400px; top: 300px; width: 200px; height: 40px;">
+<tr><td class="tl-big"><img src="/img/info.gif" width="32" height="32" border="0" align="absmiddle" hspace="5"></td>
+<td class="tl-big">Подождите, <nobr>форма загружается...</nobr></td>
+<td align="right" valign="top" width="25"><img src="/img/1pix.gif" width="13" height="13" border="0"></td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+
+<!-- TOP -->
+<tr valign="top">
+<td class="top-left" valign="bottom" align="center"><img src="/img/logo1.gif" alt="4Site CMS" width="187" height="30" border="0"></td>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" class="top">
+<tr>
+<td width="3" align="left" valign="bottom" rowspan="2"><img src="/img/corner.gif" width="4" height="2" border="0"></td>
+<!-- select site -->
+<td>&nbsp;</td>
+<!-- select site -->
+<td width="10"><img src="/img/1pix.gif" width="10" height="1" border="0"></td>
+<td width="39%" valign="bottom">
+<table border="0" cellpadding="0" cellspacing="0" align="right" height="30">
+<tr>
+<td width="2"><img src="/img/1pix.gif" width="2"></td>
+<td onmouseover="hiliteTop(this)" onmouseout="unliteTop(this)" onclick="clickTop(this); submit('sys')" style="cursor: hand;">
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="sys">
+<input type="hidden" name="site" value="256">
+<!--#include virtual="logpass_user"-->
+<!--#include virtual="system_button"-->
+</form>
+</td>
+<!--td width="4"><img src="/img/1pix.gif" width="4"></td>
+<td onmouseover="hiliteTop(this)" onmouseout="unliteTop(this)" onclick="clickTop(this)" style="cursor: hand;"><p class="tmenu"><img src="/img/help.gif" border="0" align="absmiddle" class="top">Помощь</p></td>
+<td width="4"><img src="/img/1pix.gif" width="4"></td-->
+</tr></table>
+</td><td width="20px"><img src="/img/1pix.gif" width="20" border="0"></td></tr>
+<tr><td colspan="6" class="line-bot" width="2"><img src="/img/1pix.gif" width="2"></td></tr></table>
+</td></tr>
+<!-- TOP -->
+
+<!-- LEFT -->
+<tr valign="top"><td class="left">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+<tr><td height="62" valign="top" align="center"><img src="/img/logo2.gif" alt="4Site CMS" width="187" height="62" border="0" class="logo"></td></tr>
+<tr valign="top"><td class="info4site">
+
+<script>
+function hiliteTop(obj) {
+	if (obj.className=='tmenu') { return }
+	obj.className = 'cpic'
+	obj.previousSibling.className = 'lpic'
+	obj.nextSibling.className = 'rpic'
+}
+
+function unliteTop(obj) {
+	if (obj.className=='tmenu') { return }
+	obj.className = ''
+	obj.previousSibling.className = ''
+	obj.nextSibling.className = ''
+}
+
+function clickTop(obj) {
+	if (obj.className=='tmenu') {
+		obj.className = 'cpic'
+		obj.previousSibling.className = 'lpic'
+		obj.nextSibling.className = 'rpic'
+	} else {
+		obj.className = 'tmenu'
+		obj.previousSibling.className = ''
+		obj.nextSibling.className = ''
+	}
+}
+</script>
+
+<!--#include virtual="left_menu"-->
+
+</td></tr>
+<tr><td valign="bottom">
+<!-- copyright -->
+<table border="0" cellpadding="0" cellspacing="0" class="copy">
+<tr><td rowspan="2"><img src="/img/copy-pic.gif" alt="Copyright ООО «Метод Лаб»" width="36" height="36" border="0"></td>
+<td nowrap><p class="copy">&#169 2003-2008<br>ООО &laquo;Метод Лаб&raquo;</p></td></tr>
+<tr><td><p class="copy"><a href="http://www.4site.ru" class="copy">www.4site.ru</a></p></td>
+</tr></table>
+<!-- copyright -->
+</td></tr></table>
+</td>
+<!-- LEFT -->
+
+<!-- CENTER -->
+<td valing="top" class="rbord0">
+<table border="0" cellpadding="0" cellspacing="0" class="center">
+<tr valign="top">
+<td>
+<!-- menu crumbs -->
+<table border="0" cellpadding="0" cellspacing="0" class="head1">
+<tr valign="bottom">
+<td width="53"><img src="/img/common_head.gif" border="0"></td>
+<td class="head1"><h1>Сайты</h1></td>
+</tr></table>
+<!-- menu crumbs -->
+
+<!-- info -->
+
+<table border="0" cellpadding="0" cellspacing="0" class="favor" id="_fav" style="position: absolute; top: 32px; right: 24px; visibility: hidden">
+<!--#include virtual="fav_button"-->
+<!--#include virtual="favorites"-->
+</table>
+
+<!--#include virtual="site_list"-->
+
+<script type="text/javascript">
+document.getElementById('loading').style.display='none'
+</script>
+<!-- info -->
+</td><td width="15"><img src="/img/1pix.gif" width="15"></td></tr></table>
+</td>
+<!-- CENTER -->
+</tr></table>
+</body>
+</html>

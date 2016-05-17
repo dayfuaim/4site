@@ -1,0 +1,9 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<table class="tab_nobord">
+<tr><td class="tl">Рубрика:</td>
+<td class="tal"><select name="gallerycategory_id" onchange="this.form.submit()"><option>-- Выберите --</option><!--#include virtual="Gallery::category_comp_downlist"--></select></td>
+</tr></table></form>
+<!--#include virtual="Gallery::gallery_comp_edit"-->

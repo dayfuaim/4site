@@ -1,0 +1,12 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="modcnf">
+<input type="hidden" name="returnact" value="module_conf">
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<table class="tab_nobord" cellpadding="0" cellspacing="0">
+<tr>
+	<td class="tl">Название</td>
+	<td class="tal"><select name="module_id" onchange="submit('modcnf')"><option>-- Choose --</option><!--#include virtual="module_downlist"--></select></td>
+</tr>
+</table>
+</form>
+<!--#include virtual="module_conf2"-->

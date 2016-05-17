@@ -1,0 +1,50 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<!--#include virtual="stdate_hidden"-->
+<!--#include virtual="enddate_hidden"-->
+<!--#include virtual="lag_hidden"-->
+<!--#include virtual="news_edit"-->
+<!--#include virtual="logpass"-->
+</form>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript" src="/js/ext/build/locale/ext-lang-ru_cp1251.js"></script>
+<script type="text/javascript" src="/fckeditor/fckeditor.js"></script>
+<script type="text/javascript" language="JavaScript">
+function check_news(frm) {
+	var ff = eval('document.forms.'+frm)
+	if (ff.head_fld.value.length<3) {
+		alert("Слишком короткий заголовок!\n(длина меньше 3 символов)");
+		return false
+	}
+	if (ff.body_fld.value.length<3) {
+		alert("Слишком короткое тело новости!\n(длина меньше 3 символов)");
+		return false
+	}
+	return true
+}
+
+function countSym(fldName) {
+	var d = document
+	var ff = d.forms['period']
+	var fld = ff.elements[fldName]
+	d.getElementById('_count').innerText = fld.value.length
+}
+var ResizableEx = {
+    init : function(){
+		var DT = new Ext.form.DateField({
+			applyTo: 'date_fld',
+			name: 'date_fld',
+			width: 180,
+			format: 'd.m.Y H:i:s',
+			allowBlank: true
+		})
+	}
+};
+
+Ext.EventManager.onDocumentReady(InitCtrls,ResizableEx,true);
+
+function InitCtrls() {
+	ResizableEx.init()
+<!--#include virtual="wysiwyg"-->
+}
+</script>

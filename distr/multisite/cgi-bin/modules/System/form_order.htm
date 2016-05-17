@@ -1,0 +1,22 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="ford">
+<table class="tab_nobord">
+	<tr>
+		<td class="tl">Модуль</td>
+		<td class="tal"><select name="module_id" onchange="this.form.submit()"><option>-- Выберите --</option><!--#include virtual="module_downlist"--></select></td>
+	</tr>
+</table>
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<input type="hidden" name="show" value="1">
+</form>
+
+<!--#include virtual="form_order_drag"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="order" value="">
+<input type="hidden" name="act" value="order_form">
+<!--#include virtual="returnact"-->
+</form>
+
+<script type="text/javascript">
+Sortable.create('gpix',{dropOnEmpty: false});
+</script>

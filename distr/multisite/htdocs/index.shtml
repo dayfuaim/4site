@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Вход в систему</title>
+<link rel="stylesheet" type="text/css" href="style-4site.css">
+<SCRIPT language="JavaScript" src="/js/script.js"></script>
+</head>
+<body style="background-color:#F7FFF5;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+<tr><td valign="middle" align="center">
+<img src="/img/logo-login.gif" alt="4Site" width="221" height="71" border="0" vspace="8">
+<table border="0" cellpadding="0" cellspacing="0" class="tab3">
+<form method="post" action="/pcgi/4site.pl" name="logform">
+<tr><td colspan="2">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tab4">
+<tr><td height="3" colspan="2"><img src="/img/1pix.gif" border="0" height="3"></td></tr>
+<tr><td class="tr"><b>Логин</b></td>
+<td class="tal"><input type="Text" size="20" name="login"></td></tr>
+<tr><td class="tr"><b>Пароль</b></td>
+<td class="tal"><input type="password" size="20" name="password"></td></tr>
+<tr><td colspan="2" class="tar" style="padding-top:6px;"><input type="Image" src="/img/but/enter-to1.gif" title="Войти" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td></tr>
+<tr><td height="3" colspan="2"><img src="/img/1pix.gif" border="0" height="3"></td></tr>
+</table></td></tr>
+<input type="hidden" name="start" value="1"></form></table>
+</td></tr></table>
+<script><!--
+document.logform.login.focus() // --></script>
+
+</body>
+</html>

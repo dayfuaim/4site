@@ -1,0 +1,34 @@
+<script language="JavaScript">
+function checkDB() {
+	if (!/^\d+$/.test(document.forms.ff.site1.value) || !/^\d+$/.test(document.forms.ff.site2.value)) {
+		alert("Выберите два сайта!")
+		return false
+	}
+	if (document.forms.ff.site1.value==document.forms.ff.site2.value) {
+		alert("Выберите два разных сайта!")
+		return false
+	}
+	return true
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="ff">
+<!--#include virtual="logpass"-->
+<table class="tab" cellpadding="0" cellspacing="0">
+<tr><td>
+<table class="tab2" cellpadding="0" cellspacing="0">
+	<tr>
+		<th>Сайт 1</th>
+		<th width="20">&nbsp;</th>
+		<th>Сайт 2</th>
+	</tr>
+	<tr class="tr_col1">
+		<td class="tal"><select name="site1"><option>-- Выберите --</option><!--#include virtual="site1_downlist"--></select></td>
+		<td width="20" class="tal"><input type="submit" class="but" value="<->" onclick="return checkDB()"></td>
+		<td class="tal"><select name="site2"><option>-- Выберите --</option><!--#include virtual="site2_downlist"--></select></td>
+	</tr>
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="returnact" value="db_cmp">
+</form>
+<!--#include virtual="db_table_select"-->
+</table>
+</td></tr></table>

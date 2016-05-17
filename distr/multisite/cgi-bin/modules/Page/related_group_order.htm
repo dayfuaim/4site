@@ -1,0 +1,13 @@
+<form name="fo" method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="order_fld" value="">
+<!--#include virtual="related_group_order_drag"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="order" value="">
+<input type="hidden" name="act" value="order_related_group">
+<!--#include virtual="returnact"-->
+</form>
+
+<script type="text/javascript">
+Sortable.create('gpix',{dropOnEmpty: false});
+</script>

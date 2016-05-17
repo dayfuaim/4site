@@ -1,0 +1,49 @@
+<SCRIPT>
+function massub()
+{
+document.del_page.show.value="1";
+submit('del_page');
+}
+
+function do_act(form,page_id,content) {
+	var ff = eval('document.forms.'+form)
+	ff.page_id.value=page_id;
+	ff.spage_id.value=page_id;
+	ff.pagecontent_id.value=content;
+	ff.show.value = 1;
+	ff.submit()
+}
+
+function checkDel(frm) {
+	var ff = document.forms[frm];
+	var chk = 0;
+	for (var i=0; i<ff.elements.length; i++) {
+		if (ff[i].type=='checkbox') {
+			if (ff[i].checked) {
+				chk++
+			}
+		}
+	}
+	if (chk) {
+		return confirm("Будут удалены все подчинённые выделенных страниц.\nПродолжить?")
+	}
+	return false
+}
+</SCRIPT>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="del_page">
+<!--#include virtual="page_ex_list"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="pagecontent_id" value="">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="show" value="">
+<input type="hidden" name="act" value="del_page_batch">
+<!--#include virtual="returnact"-->
+</form>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<!--#include virtual="page_del"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="page_id" value="<!--#include virtual="page_id"-->">
+<input type="hidden" name="act" value="del_page_batch">
+<input type="hidden" name="returnact" value="del_page">
+<input type="hidden" name="show" value="0"></form>

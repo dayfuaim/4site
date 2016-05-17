@@ -1,0 +1,36 @@
+<SCRIPT>
+function massub()
+{
+document.swap_page.show.value="1";
+submit('swap_page');
+}
+
+function do_act(form,page_id,content) {
+	var ff = eval('document.forms.'+form)
+	ff.page_id.value=page_id;
+	ff.spage_id.value=page_id;
+	ff.show.value = 1;
+	ff.submit()
+}
+</SCRIPT>
+<h2>Выберите страницу</h2>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="swap_page">
+<!--#include virtual="page_select"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="returnact" value="swap_page">
+<input type="hidden" name="show" value="">
+</form>
+<!--script language="JavaScript">
+	var b = layer('attr_but')
+	b.style.display='none'
+</script-->
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<!--#include virtual="page_swap"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="act" value="swap_page">
+<input type="hidden" name="returnact" value="swap_page">
+<input type="hidden" name="show" value="1">
+</form>
+

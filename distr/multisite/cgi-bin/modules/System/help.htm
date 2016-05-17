@@ -1,0 +1,19 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<table class="tab_nobord">
+	<tr>
+		<td class="tl">Модуль</td>
+		<td class="tal"><select name="module_id" onchange="if(this.selectedIndex!=0)this.form.submit()"><option>-- Choose --</option><!--#include virtual="module_downlist"--></select></td>
+	</tr>
+<table>
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+</form>
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+	<!--#include virtual="form_by_mod_downlist"-->
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+</form>
+

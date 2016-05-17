@@ -1,0 +1,90 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="perms">
+<table class="tab_nobord" cellpadding="0" cellspacing="0">
+<tr>
+<td class="tl">Пользователь</td>
+<td class="tal"><select name="user_id" onchange="if(!this.value){alert('Выберите пользователя!')}else{if(document.forms.site.site_id.value){document.forms.site.user_id.value=this.value;document.forms.site.submit()}else{document.forms.site.user_id.value=this.value}}"><option value="">-- Пользователь --</option><!--#include virtual="user_downlist"--></select></td>
+</tr>
+</table>
+<!--#include virtual="returnact"-->
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+</form>
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="site">
+<!--#include virtual="returnact"-->
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="user_id" value="<!--#include virtual="user_id"-->">
+<!--#include virtual="logpass"-->
+<table class="tab_nobord" cellpadding="0" cellspacing="0">
+<tr>
+<td class="tl">Сайт</td>
+<td class="tal"><div id="sites"><select name="site_id" onchange="if(this.value){if(document.forms.perms.user_id.value){submit('site')}}else{alert('Выберите сайт!')}"><option value="">-- Выберите сайт --</option><!--#include virtual="site_downlist"--></select></div></td>
+</tr>
+</table>
+</form>
+
+<form method="post" name="perm" id="perm" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<!--#include virtual="returnact"-->
+<input type="hidden" name="act" value="edit_perms"/>
+<input type="hidden" name="show" value="1"/>
+<!--#include virtual="logpass"-->
+
+<!--#include virtual="form_by_module_list"-->
+
+</form>
+
+<script type="text/javascript">
+function exec(oid) {
+	var d = document;
+	var thisID = 'c'+oid
+	var o = Ext.get(thisID).dom;
+	var ff = d.forms.perm
+	for (var i=0;i<ff.elements.length;i++) {
+		var thel = ff.elements[i]
+		var s = thel.name
+		if (s.indexOf(oid)==1 && s!=thisID) {
+			var val = thel.value
+			if (o.checked==true) {
+				if (val=="EXEC") thel.checked = true;
+			} else {
+				if (val=="_") thel.checked = true;
+			}
+		}
+	}
+}
+
+function toggleAll(obj) {
+	var d = document;
+	var ff = d.forms.perm
+	var chks = new Array();
+	var rads = new Array();
+	for (var i=0;i<ff.elements.length;i++) {
+		var thel = ff.elements[i]
+		if (thel.type=='checkbox') {
+			chks.push(thel)
+		}
+		if (thel.type=='radio' && !thel.disabled) {
+			rads.push(thel)
+		}
+	}
+	//var chks = Form.getInputs('perm','checkbox')
+	//var rads = Form.getInputs('perm','radio')
+	var myres = obj.checked
+	for (var i=0; i<chks.length; i++) {
+		var ch = chks[i]
+		if (!ch.name) continue;
+		ch.checked = myres
+		var m = ch.name.match(/c(.+)/);
+	}
+	var rl = rads.length;
+	for (var j=0; j<rl; j++) {
+		var ra = rads[j]
+		var val = ra.value
+		if (myres) {
+			if (val=="EXEC") ra.checked = true;
+		} else {
+			if (val=="_") ra.checked = true;
+		}
+	}
+}
+</script>

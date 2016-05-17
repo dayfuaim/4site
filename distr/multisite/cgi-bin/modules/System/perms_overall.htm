@@ -1,0 +1,70 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="perms">
+<table class="tab_nobord" cellpadding="0" cellspacing="0">
+<tr>
+<td class="tl">Пользователь</td>
+<td class="tal"><select name="user_id" onchange="if(!this.value){alert('Выберите пользователя!')}else{if(document.forms.module.module_id.value){document.forms.module.user_id.value=this.value;document.forms.module.submit()}else{document.forms.module.user_id.value=this.value}}"><option value="">-- Пользователь --</option><!--#include virtual="user_downlist"--></select></td>
+</tr>
+</table>
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+</form>
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="module">
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="user_id" value="<!--#include virtual="user_id"-->">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<table class="tab_nobord" cellpadding="0" cellspacing="0">
+<tr>
+<td class="tl">Модуль</td>
+<td class="tal"><select name="module_id" onchange="if(this.value){if(document.forms.perms.user_id.value){this.form.submit()}}else{alert('Выберите модуль!')}"><option value="">-- Выберите модуль --</option><!--#include virtual="module_downlist"--></select></td>
+</tr>
+</table>
+</form>
+
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="perm">
+<input type="hidden" name="act" value="edit_perms_overall">
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="user_id" value="<!--#include virtual="user_id"-->">
+<input type="hidden" name="module_id" value="<!--#include virtual="module_id"-->">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+
+<!--#include virtual="forms_overall_list"-->
+
+</form>
+
+<script>
+var d = document;
+var ff = d.forms.perm;
+for (var i=0;i<ff.elements.length;i++) {
+	var s = ff.elements[i].name
+	if (s.indexOf('dc')!=0) {
+		next;
+	} else {
+		var g = /^dc(\d+)/.exec(s);
+		check_perms(g[1])
+	}
+}
+function check_perms(oid) {
+	var d = document;
+	var dc = d.getElementById('dc'+oid)
+	var ff = d.forms.perm
+	for (var i=0;i<ff.elements.length;i++) {
+		var s = ff.elements[i].name
+		if (s.indexOf('p')!=0) {
+			next;
+		} else {
+			if ('p'+oid==s) {
+				if (dc.checked) {
+					ff.elements[i].disabled = true
+				} else {
+					ff.elements[i].disabled = false
+				}
+			}
+		}
+	}
+}
+
+</script>

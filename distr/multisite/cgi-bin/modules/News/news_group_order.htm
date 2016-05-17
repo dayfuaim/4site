@@ -1,0 +1,29 @@
+<h2>Порядок групп Новостей</h2>
+<!--#include virtual="news_group_order_drag"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="order" value="">
+<input type="hidden" name="act" value="order_news_group">
+<!--#include virtual="returnact"-->
+</form>
+
+<script type="text/javascript">
+var dragsort = ToolMan.dragsort()
+var junkdrawer = ToolMan.junkdrawer()
+
+dragsort.makeListSortable(document.getElementById("gpix"), verticalOnly, saveOrder)
+
+function verticalOnly(item) {
+	item.toolManDragGroup.verticalOnly()
+}
+
+function saveOrder(item) {
+	var group = item.toolManDragGroup
+	var list = group.element.parentNode
+	var id = list.getAttribute("id")
+	if (id == null) return
+	group.register('dragend', function() {
+		ToolMan.cookies().set("list-" + id,
+				junkdrawer.serializeList(list), 365)
+	})
+}
+</script>

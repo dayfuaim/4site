@@ -1,0 +1,20 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="modcnf">
+<input type="hidden" name="show" value="1">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<table class="tab_nobord" cellpadding="0" cellspacing="0">
+<tr>
+	<td class="tl">Название</td>
+	<td class="tal"><select name="module_id" onchange="if(this.selectedIndex!=0){this.form.submit()}"><option>-- Choose --</option><!--#include virtual="module_downlist"--></select></td>
+</tr>
+<!--tr>
+	<td class="tl"><label for="ct">Проверять таблицы</label></td>
+	<td class="tal"><input type="checkbox" name="check_table" value="1" id="ct"></td>
+</tr>
+<tr>
+	<td colspan="2" class="tar"><input type="Image" src="/img/but/select1.gif" title="Выбрать" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+</tr-->
+</table>
+</form>
+
+<!--#include virtual="module_check"-->

@@ -1,0 +1,32 @@
+<table class="tab" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+<table class="tab2" border="0" cellpadding="0" cellspacing="0" id="gct">
+<tr><th>Название рубрики</th><th>&nbsp;</th></tr>
+<!--#include virtual="Gallery::gallery_cat_list"--></table></td></tr></table>
+
+<script type="text/javascript">
+function swGC(elt,trid) {
+	var clss = 'cl';
+	if (/close\.gif/.test(elt.src)) {
+		elt.src = '/img/4site/menu/open.gif'
+		clss = 'op'
+	} else {
+		elt.src = '/img/4site/menu/close.gif'
+	}
+	var flg = 0;
+	var gctr = $('gct').getElementsByTagName('TR');
+	for (var i=0;i<gctr.length;i++) {
+		if (gctr[i].title==('p'+trid)) {
+			var cl = (gctr[i].className.split(' '))[0];
+			gctr[i].className = cl+' '+ clss;
+			if (!flg) {
+				flg = 1
+			}
+			continue;
+		}
+		if (flg) {
+			break;
+		}
+	}
+}
+</script>

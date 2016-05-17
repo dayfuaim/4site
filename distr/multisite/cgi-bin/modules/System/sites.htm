@@ -1,0 +1,119 @@
+<h2>Добавление сайта</h2>
+<div id="form-panel" style="margin-top:10px">
+<div id="form-code">
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="site">
+<table class="tab" cellpadding="0" cellspacing="0">
+<tr><td>
+<table class="tab2" cellpadding="0" cellspacing="0">
+<tr>
+	<td class="tl">Название</td>
+	<td class="tal"><input type="text"  name="site_fld" size="32"></td>
+</tr>
+<tr>
+	<td class="tl">URL</td>
+	<td class="tal"><input type="text"  name="host_fld" size="32"></td>
+</tr>
+<tr>
+	<td class="tl">Домены<br>(каждый на новой строке)</td>
+	<td class="tal"><textarea  name="domains" cols="32" rows="5"></textarea></td>
+</tr>
+<tr>
+	<td class="tl">Зеркало</td>
+	<td class="tal"><select name="mirror_id"><option value="0">< без зеркала ></option><!--#include virtual="mirror_downlist"--></select></td>
+</tr>
+<tr>
+	<td class="tl"><label for="l">Локальный</label></td>
+	<td class="tal"><input type="checkbox" name="local_fld" value="1" id="l"></td>
+</tr>
+<tr>
+	<td class="tl"><label for="cl">Тест (клон)</label></td>
+	<td class="tal"><input type="checkbox" name="clone_fld" value="1" id="cl"></td>
+</tr>
+<tr style="background-color: #FFE1E1">
+	<td class="tl">SOAP-Auth login</td>
+	<td class="tal"><input type="text"  name="authlogin_fld" size="16" maxlength="16"></td>
+</tr>
+<tr style="background-color: #FFE1E1">
+	<td class="tl">SOAP-Auth password</td>
+	<td class="tal"><input type="text"  name="authpass_fld" size="32" maxlength="64"></td>
+</tr>
+<tr class="tr_col1">
+	<td class="tl">DB host</td>
+	<td class="tal"><input type="text"  name="dbhost_fld" size="32" value="localhost"></td>
+</tr>
+<tr class="tr_col1">
+	<td class="tl">DB name</td>
+	<td class="tal"><input type="text"  name="dbname_fld" size="32"></td>
+</tr>
+<tr class="tr_col1">
+	<td class="tl">DB user</td>
+	<td class="tal"><input type="text"  name="dbuser_fld" size="32"></td>
+</tr>
+<tr class="tr_col1">
+	<td class="tl">DB pass</td>
+	<td class="tal"><input type="text"  name="dbpass_fld" size="10"></td>
+</tr>
+<tr class="tr_col2" style="border-top: 2px solid Red; border-left: 2px solid Red; border-right: 2px solid Red">
+	<td class="tl">Home DIR</td>
+	<td class="tal"><input type="text"  name="homedir_fld" size="32" value="/home/httpd"></td>
+</tr>
+<tr class="tr_col2" style="border-left: 2px solid Red; border-right: 2px solid Red">
+	<td class="tl">htdocs DIR</td>
+	<td class="tal"><input type="text"  name="htdocs_fld" size="32" value="/htdocs"></td>
+</tr>
+<tr class="tr_col2" style="border-left: 2px solid Red; border-right: 2px solid Red">
+	<td class="tl">CGI DIR</td>
+	<td class="tal"><input type="text"  name="cgidir_fld" size="32" value="/pcgi"></td>
+</tr>
+<tr class="tr_col2" style="border-bottom: 2px solid Red; border-left: 2px solid Red; border-right: 2px solid Red">
+	<td class="tl">CGI_ref DIR</td>
+	<td class="tal"><input type="text"  name="cgiref_fld" size="32" value="/pcgi"></td>
+</tr>
+<tr class="tr_col2" style="border-bottom: 2px solid Red; border-left: 2px solid Red; border-right: 2px solid Red">
+	<td class="tl" title="Точный путь к ServerAuth">SOAP_ref PATH</td>
+	<td class="tal"><input type="text"  name="soap_fld" size="32" value="/pcgi/SOAP/ServerAuth.pm"></td>
+</tr>
+<tr>
+	<td class="tar" colspan="2"><input type="Image" src="/img/but/reset1.gif" title="Сброс" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)" onclick="this.form.reset(); return false"> <input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+</tr>
+</table>
+</td></tr></table>
+<!--#include virtual="logpass"-->
+<input type="hidden" name="act" value="add_site">
+<input type="hidden" name="returnact" value="sites">
+</form>
+
+</div></div>
+
+<link rel="stylesheet" type="text/css" href="/js/ext/resources/css/ext-all.css" />
+<script type="text/javascript">
+Ext.onReady(function(){
+	new Ext.Panel({
+    	contentEl: 'form-code',
+    	width: 700,
+    	title: 'Добавить сайт',
+    	hideCollapseTool: false,
+    	titleCollapse: true,
+    	collapsible: true,
+    	collapsed: true,
+		animCollapse: false,
+    	renderTo: 'form-panel'
+    });
+});
+</script>
+<script language="JavaScript">
+function checkYes() {
+	if (confirm("Вы ДЕЙСТВИТЕЛЬНО ХОТИТЕ\nудалить сайт?")) {
+		return true
+	}
+	return false
+}
+</script>
+<h2>Редактирование сайтов</h2>
+<table class="tab" cellpadding="0" cellspacing="0">
+<tr><td>
+<table class="tab2" cellpadding="0" cellspacing="0">
+<tr><th colspan="2">Название (URL)</th></tr>
+<!--#include virtual="site_list"-->
+</table>
+</td></tr></table>

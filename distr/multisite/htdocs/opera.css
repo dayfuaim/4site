@@ -1,0 +1,63 @@
+input[type="text"] {
+	font: normal 70% Verdana,Geneva,sans-serif;/*input[text]*/
+	text-align: left !important;
+	margin: 3px 0;
+	border: 1px solid #efc5a0
+}
+
+input[type="image"] {
+	border:none
+}
+
+.divtree {
+	width:80%;
+	display:block;
+}
+ul.tree {
+	margin: 0px 0px 0px 18px !important;
+	padding: 2px 0 1px 0;
+}
+
+.tree li:hover {background-color:yellow;}
+
+ul.tree li {
+	font:normal 80%/100% Verdana,Geneva,sans-serif;
+	display: block;
+}
+
+._chld {
+	padding: 0px !important;
+}
+
+.box1, .box2, .box3 {
+	display: block;
+	top: -16px !important;
+	margin: 0px 3px 3px 3px;
+	position: relative;
+	float: right;
+}
+
+.box1{right:-45px;}
+.box2{right: 0px;}
+.box3{right: 45px;}
+
+
+img.disabled {
+	opacity: 0.3;
+}
+
+.dsbl {
+	opacity: 0.3;
+}
+
+/* For GalleryCategory list */
+.op {
+	display: table-row;
+}
+
+/* DateField */
+input.x-form-field {
+	margin: 0 !important;
+}
+
+.tal input{padding:2px;}

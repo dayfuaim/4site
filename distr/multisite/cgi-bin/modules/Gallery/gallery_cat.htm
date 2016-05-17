@@ -1,0 +1,39 @@
+<script>
+function checkEmpty(obj) {
+	obj.value.replace(/^[ ]+/,'')
+	if (!obj.value || /^\s+$/.test(obj.value)) {
+		$('but').disabled = true
+	} else {
+		if (obj.value.length>=3) {
+			$('but').disabled = false
+		} else {
+			$('but').disabled = true
+		}
+	}
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="gca">
+<table class="tab_nobord">
+<tr><td class="tl">Название рубрики</td>
+<td class="tal"><input type="text"  name="gallerycategory_fld" size="30" onchange="checkEmpty(this)" onkeypress="checkEmpty(this)"></td></tr>
+	<tr>
+		<td class="tl">Родительская Рубрика</td>
+		<td class="tal"><select name="parent_id"><option>-- нет --</option><!--#include virtual="Gallery::category_downlist"--></select></td>
+	</tr>
+<tr><td class="tl" title="Рубрика, содержащая только ссылки на картинки из разных других рубрик"><label for="cmp">Сборная рубрика?</cmp></td>
+<td class="tal"><input type="checkbox" name="compilation_fld" value="1" id="cmp"></td></tr>
+<tr><td class="tl"><label for="shw">Показывать в Галерее?</label></td>
+<td class="tal"><input type="checkbox" name="enabled_fld" value="1" id="shw"></td></tr>
+<tr><td class="tl">Привязка к странице</td>
+<td class="tal"><select name="page_id"><option value="">-- нет привязки --</option><!--#include virtual="Page::page_downlist"--></select></td></tr>
+<tr><td class="tl">Кол-во столбцов</td>
+<td class="tal"><input type="text"  name="cols_fld" size="4"></td></tr>
+<tr><td class="tl">Макс. количество строк</td>
+<td class="tal"><input type="text"  name="rows_fld" size="4"></td></tr>
+<tr><td class="tar" colspan="2"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)" id="but"></td>
+<input type="hidden" name="act" value="add_gallery_cat">
+<!--#include virtual="returnact"--></tr></table>
+<!--#include virtual="logpass"--></form>
+<script type="text/javascript">
+checkEmpty($('gallerycategory_fld'));
+</script>

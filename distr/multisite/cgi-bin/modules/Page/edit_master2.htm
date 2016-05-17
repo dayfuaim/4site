@@ -1,0 +1,42 @@
+<SCRIPT>
+function massub()
+{
+document.master_sub.master_page_id.value=document.edit_master2.master_page_id.value;
+submit('master_sub');
+}
+
+function do_act(form,page_id) {
+	var ff = eval('document.forms.edit_master2')
+	var sub = eval('document.forms.master_sub');
+	ff.page_id.value=page_id
+	ff.spage_id.value=page_id
+	sub.spage_id.value=page_id
+	ff.master_page_id.value=ff.page_id.value;
+	sub.master_page_id.value=ff.master_page_id.value;
+	sub.submit();
+}
+</SCRIPT>
+<h2>Выбранная страница <b>&laquo;<!--#include virtual="originalpage_sel"-->&raquo;</b></h2>
+<h3>Выберите страницу, которой будет подчинена выбранная</h3>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="edit_master2">
+<table class="tab_nobord" border="0" cellpadding="0" cellspacing="0">
+<tr><td class="tl" nowrap><img src="/img/1pix.gif" border="0" width="10">
+<img src="/img/4site/menu/page.gif" align="absmiddle" border="0"><a class="tree" href="#" onclick="do_act('edit_master2','0');return false" title="Первый уровень"><b>Первый уровень</b></a></td></tr></table>
+<!--#include virtual="page_select_master"-->
+<!--#include virtual="logpass"-->
+<input type="hidden" name="master_page_id" value="">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="folder" value="">
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="original_page_id" value="<!--#include virtual="originalpage_id"-->">
+<input type="hidden" name="act" value="edit_master2"></form>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="master_sub">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="folder" value="">
+<input type="hidden" name="returnact" value="edit_master1">
+<input type="hidden" name="act" value="edit_pagemaster">
+<input type="hidden" name="master_page_id" value="">
+<input type="hidden" name="original_page_id" value="<!--#include virtual="originalpage_id"-->">
+<input type="hidden" name="page_id" value="<!--#include virtual="originalpage_id"-->">
+<!--#include virtual="logpass"--></form>
+

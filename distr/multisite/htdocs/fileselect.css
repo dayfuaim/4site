@@ -1,0 +1,33 @@
+body{background-color:#fff;
+margin:15px;}
+
+div.up{background-color:#fff;
+width:75px;
+height:18px;
+margin:0 0 5px 0;
+padding:2px;}
+
+h3{font:normal 16px Arial, Helvetica, sans-serif;
+color: #D27100;
+text-align: left;
+padding:0;
+margin:0 0 7px 0;}
+h4{font:normal 11px Verdana, Geneva,sans-serif;
+color:#000;
+text-align:left;
+padding:0;
+margin:0 0 7px;}
+
+.img1{margin:2px 3px 2px 0;}
+.img2{margin:3px 3px 0 0;}
+
+a{font:normal 12px Verdana, Geneva,sans-serif;
+color:#006D02;
+padding:0;
+margin:0;
+text-decoration:none;}
+a:hover{text-decoration:underline;
+color:#D17200;}
+
+span.grey{font:normal 12px Verdana, Geneva,sans-serif;
+color:#7B7B7B;}

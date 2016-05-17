@@ -1,0 +1,25 @@
+<h2>Добавление модуля</h2>
+<form method="POST" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<table class="tab_noord">
+	<tr>
+		<td class="tl">Название модуля:</td><td class="tal"><input type="text" name="module_fld"></td></tr>
+	<tr><td class="tl">Название модуля в меню:</td><td class="tal"><input type="text" name="menuname_fld"></td></tr>
+	<tr><td class="tl">Описание модуля:</td><td class="tal"><textarea name="descr_fld" cols="30" rows="5"></textarea></td></tr>
+	<tr><td colspan="2" class="tar"><input type="Image" src="/img/but/do1.gif" title="Выполнить" class="but" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td>
+	</tr>
+</table>
+<br>
+<!--#include virtual="returnact"-->
+<input type="hidden" name="act" value="add_module">
+<!--#include virtual="logpass"-->
+</form>
+<h2>Редактирование модуля</h2>
+<table class="tab" cellspacing="0" cellpadding="0" border="0"><tr><td>
+<table class="tab2" cellspacing="0" cellpadding="0" border="0">
+	<tr>
+		<th width="400">Название (Системное имя)</th>
+		<th>Версия</th>
+		<th align="center"><img src="/img/del.gif" border="0" hspace="4"></th>
+	</tr>
+<!--#include virtual="mod_list"-->
+</table></td></tr></table>

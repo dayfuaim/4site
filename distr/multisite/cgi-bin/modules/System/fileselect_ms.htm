@@ -1,0 +1,21 @@
+<script>
+function fs_open1_m(d,t,frm,id) {
+	var fs = document.forms.fsel_m;
+	fs.d.value = d
+	fs.t.value = t
+	fs.form.value = frm
+	fs.fid.value = id
+	submit('fsel_m')
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site_popup.pl" name="fsel_m">
+<!--#include virtual="logpass_user"-->
+<input type="hidden" name="site" value="256">
+<input type="hidden" name="s" value="<!--#include virtual="site_id"-->">
+<input type="hidden" name="d" value="">
+<input type="hidden" name="t" value="">
+<input type="hidden" name="form" value="">
+<input type="hidden" name="fid" value="">
+<input type="hidden" name="returnact" value="fileselect_ms">
+</form>
+<!--#include virtual="fileselect_ms"-->

@@ -1,0 +1,12 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl">
+<table class="tab_nobord">
+<tr><td class="tl">Имя пользователя</td>
+<td class="tal"><input type="text"  name="username_fld" size="40"></td></tr>
+<tr><td class="tl">E-Mail</td>
+<td class="tal"><input type="text"  name="email_fld" size="40"></td></tr>
+<tr><td class="tl">Комментарий</td>
+<td class="tal"><textarea name="bottom_fld" rows="10" cols="50"></textarea></td></tr>
+<tr><td>&nbsp;</td><td class="tar"><input type="Image" src="/img/but/add1.gif" title="Добавить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"></td></tr>
+</table><!--#include virtual="logpass"-->
+<input type="hidden" name="act" value="add_page_comment">
+<!--#include virtual="returnact"--></form>

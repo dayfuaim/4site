@@ -1,0 +1,12 @@
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="sp">
+<!--#include virtual="logpass"-->
+<!--#include virtual="returnact"-->
+<table border="0" cellpadding="0" cellspacing="0" class="warning" height="32">
+<tr><td class="tl-big" rowspan="2" valign="top"><img src="/img/warning.gif" width="32" height="27" border="0" align="absmiddle" hspace="5"></td>
+<td class="tl-big" valign="top"><span class="alert">Внимание!</span></td></tr><tr><td class="tl-big" valign="top">Будет выполнено исправление прав файлов страниц с учётом установленного свойства Last-Modified.</td></tr></table><br>
+<input type="Image" src="/img/but/do1.gif" title="Выполнить" onmouseover="b_hilite(this)" onmouseout="b_unlite(this)"><br><br>
+<input type="hidden" name="show" value="1">
+</form>
+
+
+<!--#include virtual="fixperm_list"-->

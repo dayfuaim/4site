@@ -1,0 +1,39 @@
+<script language="JavaScript">
+function checkDB() {
+	if (!/^\d+$/.test(document.forms.ff.site1.value) || !/^\d+$/.test(document.forms.ff.site2.value)) {
+		alert("Выберите два сайта!")
+		return false
+	}
+	return true
+}
+
+function checkTbl() {
+	if (/^--/.test(document.forms.ff1.table1.value) || /^--/.test(document.forms.ff1.table2.value)) {
+		alert("Выберите две таблицы!")
+		return false
+	}
+	if (document.forms.ff1.site1.value==document.forms.ff1.site2.value && document.forms.ff1.table1.value==document.forms.ff1.table2.value) {
+		alert("Выберите две разные таблицы\nлибо\nдва разных сайта!")
+		return false
+	}
+	return true
+}
+</script>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="ff">
+<!--#include virtual="logpass"-->
+<table class="tab" cellpadding="0" cellspacing="0">
+<tr><td>
+<table class="tab2" cellpadding="0" cellspacing="0">
+<tr><th>Сайт 1</th><th>&nbsp;</th><th>Сайт 2</th></tr>
+	<tr class="tr_col1">
+		<td class="tal"><select name="site1"><option>-- Выберите --</option><!--#include virtual="site1_downlist"--></select></td>
+		<td class="tal"><input type="submit" class="but" value="<->" onclick="return checkDB()"></td>
+		<td class="tal"><select name="site2"><option>-- Выберите --</option><!--#include virtual="site2_downlist"--></select></td>
+	</tr>
+<input type="hidden" name="show" value="1">
+<input type="hidden" name="returnact" value="table_cmp">
+</form>
+<!--#include virtual="table_select"-->
+<!--#include virtual="table_compare"-->
+</table>
+</td></tr></table>

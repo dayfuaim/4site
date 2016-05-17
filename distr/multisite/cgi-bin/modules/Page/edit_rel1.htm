@@ -1,0 +1,30 @@
+<SCRIPT>
+function massub()
+{
+document.edit_rel1.act.value="edit_rel2";
+document.edit_rel1.original_page_id.value=document.edit_rel1.master_page_id.value;
+submit('edit_rel1');
+}
+
+function do_act(form,page_id,content) {
+	var ff = eval('document.forms.'+form)
+	ff.page_id.value=page_id;
+	ff.spage_id.value=page_id;
+	ff.show.value = 1;
+	ff.master_page_id.value=ff.page_id.value;
+	ff.original_page_id.value=ff.master_page_id.value;
+	ff.submit()
+}
+</SCRIPT>
+<h2>Выберите страницу</h2>
+<form method="post" action="<!--#include virtual="cgi_ref"-->/4site.pl" name="edit_rel1">
+<input type="hidden" name="page_id" value="">
+<input type="hidden" name="spage_id" value="">
+<input type="hidden" name="folder" value="">
+<input type="hidden" name="show" value="">
+<input type="hidden" name="master_page_id" value="">
+<input type="hidden" name="original_page_id" value="">
+<input type="hidden" name="returnact" value="edit_rel2">
+<!--#include virtual="page_select_master"-->
+<!--#include virtual="logpass"-->
+</form>

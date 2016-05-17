@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<!--#exec cgi="/pcgi/meta_title.pl"-->
+<!--#include virtual="/ssi/style-body.shtml"-->
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+<tr><td height="140">
+ВЕРХ с логотипом и картинкой<br>
+<form method="get" action="/search/index.shtml">
+<input type="hidden" name="ul" value="http://www.name.ru" >
+<table border="0" cellpadding="0" cellspacing="0" class="form-find">
+<tr><td><input type="Text" size="20" class="txt" name="q" value="Поиск по сайту" onFocus="this.value=''"></td>
+<td><input type="Submit" class="but" value="Найти"></td></tr></table></form>
+</td></tr>
+
+<tr><td height="23" align="center" class="main-menu">
+<!--#exec cgi="/pcgi/main-menu.pl"-->
+</td></tr>
+
+<tr><td valign="top" height="100%">
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+<tr valign="top">
+<!--left-->
+<td width="20%">
+
+<div>рекламный блок слева</div>
+</td>
+<!--left-->
+<td height="100%" width="60%">
+<!--\\START\\-->
+Блоки по центру<br><br><br>
+
+<h3 class="nhead">Дайджест новостей</h3>
+
+<ul class="news"><!--#exec cgi="/pcgi/news-index-main.pl"--></ul>
+<!--\\END\\-->
+</td>
+<!--right-->
+<td width="20%">
+рекламный блок справа
+</td>
+<!--right-->
+</tr></table></td></tr>
+
+<tr><td height="23" align="center" class="bot-menu">
+<!--#exec cgi="/pcgi/main-menu.pl"-->
+</td></tr>
+
+<tr><td valign="bottom" height="60" class="bottom">
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+<tr valign="bottom">
+<td class="copy">Copyright © 2007<br />
+<a href="http://www.4site.ru" target="_blank">Система управления сайтами 4Site CMS<br />
+<a href="http://www.methodlab.ru" target="_blank">Поддержка сайта: Method Lab</a></td>
+<td align="right">counters</td>
+</tr></table>
+</td></tr></table>
+<div class="iconz"><!--#exec cgi="/pcgi/iconz.pl"--></div>
+</body></html>

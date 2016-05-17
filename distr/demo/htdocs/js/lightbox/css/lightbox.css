@@ -1,0 +1,202 @@
+/*for gallery*/
+.gal{padding-right:25px;}
+.gal p{font:normal 75%/110% Verdana,Geneva,sans-serif;
+text-align:left;
+color:#004192;
+padding:2px 0 15px 0;
+cursor:pointer;
+cursor:hand;}
+.gal a.link{text-decoration:none;}
+.gal div{padding:3px;
+margin-right:10px;
+border:1px solid #cdcdcd;
+width:151px;
+cursor:pointer;
+cursor:hand;}
+
+/* For main Gallery */
+#gallery {
+	padding:0;
+	list-style-type: none;
+	text-indent: 0;
+	clear: right !important;
+	margin: 0px;
+	}
+#gallery li {
+	/*font:normal 70%/120% Verdana, Geneva,sans-serif;*/
+	float: left;
+	display: block;
+	padding:0;
+	margin: 5px 35px 5px 0;
+	/*border: 1px solid #c0c0c0;*/
+	width: 128px;
+	height:130px;
+	}
+#gallery td {
+	/*font:normal 70%/120% Verdana, Geneva,sans-serif;*/
+	padding:0;
+	margin: 5px 35px 5px 0;
+	/*border: 1px solid #c0c0c0;*/
+	width: 128px;
+	height:130px;
+	}
+/*a.gallery{
+	font-size:100%;
+	font-weight:normal;
+	color:#003daa;
+	text-decoration:underline;
+	}
+a.gallery:visited{color:#2b83c5;}
+a.gallery:hover{color:#a84d02;}
+#gallery li img.img{margin-bottom:3px;}*/
+
+p.list{padding-top:10px;}
+p.list b{background-color:#d7d7d7;
+padding:2px 4px;}
+p.list a.link{padding:0 4px;}
+
+/*for pic gallery*/
+#lightbox{
+	position: absolute;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	text-align: center;
+	line-height: 0;
+	}
+
+#lightbox a img{ border: none; }
+
+#outerImageContainer{
+	position: relative;
+	background-color: #fff;
+	width: 250px;
+	height: 250px;
+	margin: 0 auto;
+	}
+
+#imageContainer{padding: 10px 10px 0 10px;}
+
+#loading{
+	position: absolute;
+	top: 40%;
+	left: 0%;
+	height: 25%;
+	width: 100%;
+	text-align: center;
+	line-height: 0;
+	}
+#hoverNav{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	}
+#imageContainer>#hoverNav{ left: 0;}
+#hoverNav a{ outline: none;}
+
+#prevLink, #nextLink {
+	height: 100%;
+	/*width: 49%;
+	background: transparent url(../images/blank.gif) no-repeat; /* Trick IE into showing hover */
+	/*display: block;*/
+	}
+#prevLink {
+	left: 0;
+	/*float: left;*/
+	}
+#nextLink {
+	right: 0;
+	/*float: right;*/
+	}
+/*#prevLink:hover, #prevLink:visited:hover {
+	background: url(/img/arrow_left2.gif) left top no-repeat;
+	}*/
+/*#nextLink:hover, #nextLink:visited:hover {
+	background: url(/img/arrow_right2.gif) left top no-repeat;
+	}*/
+
+
+#imageDataContainer{
+	background-color: #fff;
+	margin: 0 auto;
+	line-height: 1.4em;
+	}
+
+#imageData{background-color: #fff;
+	padding:0 10px;
+	}
+
+#imageData #imageDetails{
+	float: left;
+	text-align: center;
+	width:95%;
+	}
+
+#imageData #imageDetails p#caption{
+	font:normal 95%/110% Verdana,Geneva,sans-serif;
+	padding:0;
+	margin:0;
+	}
+
+#imageData #numberDisplay{
+	font:normal 80%/110% Verdana,Geneva,sans-serif;
+	margin:10px 0 0;
+	padding:0;
+	display: block;
+	text-align:center;
+	clear: left;
+/*	padding-bottom: 1.0em;*/
+	}
+
+#imageData #numberDisplay span{
+	font-weight:bold;
+	color:#950909;
+	}
+
+#imageData #numberDisplay b{
+	font-weight: bold;
+	}
+
+#imageData #bottomNavClose{
+	width: 75px;
+	float: right;
+	padding-bottom: 0.7em;
+	}
+
+
+#overlay{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 90;
+	width: 100%;
+	height: 500px;
+	background-color: #000;
+	filter:alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+	}
+
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	}
+
+* html>body .clearfix {
+	display: inline-block;
+	width: 100%;
+	}
+
+* html .clearfix {
+	/* Hides from IE-mac \*/
+	height: 1%;
+	/* End hide from IE-mac */
+	}
